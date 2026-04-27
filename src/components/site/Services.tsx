@@ -1,8 +1,16 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SERVICES_FLAT, SERVICE_FILTERS } from "./data";
 
 export const Services = () => {
   const [filter, setFilter] = useState<string>("All");
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const nudge = (dir: 1 | -1) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * (el.clientWidth * 0.5), behavior: "smooth" });
+  };
 
   const items = useMemo(
     () =>
@@ -51,11 +59,15 @@ export const Services = () => {
         </div>
       </div>
 
-      {/* Auto-scrolling marquee */}
-      <div className="group overflow-hidden">
+      {/* Auto-scrolling marquee + manual horizontal scroll */}
+      <div className="group relative">
+        <div
+          ref={scrollRef}
+          className="overflow-x-auto no-scrollbar"
+        >
         <div
           key={filter}
-          className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused] pl-6 md:pl-16"
+          className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused] pl-6 md:pl-16 pr-6 md:pr-16"
         >
           {loop.map((item, idx) => (
             <article
@@ -82,6 +94,23 @@ export const Services = () => {
             </article>
           ))}
         </div>
+        </div>
+
+        {/* Manual prev/next arrows */}
+        <button
+          onClick={() => nudge(-1)}
+          aria-label="Scroll services left"
+          className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-background/80 hover:bg-background border border-foreground/20 text-foreground items-center justify-center backdrop-blur transition-colors z-10"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={() => nudge(1)}
+          aria-label="Scroll services right"
+          className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-background/80 hover:bg-background border border-foreground/20 text-foreground items-center justify-center backdrop-blur transition-colors z-10"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
       </div>
     </section>
   );
