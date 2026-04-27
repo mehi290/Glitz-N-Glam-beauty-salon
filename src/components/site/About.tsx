@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export const About = () => {
   const aboutTitle = "About Trex Beaux";
-  const aboutVideoSrc = "/video/about-video.mp4";
+  const aboutImageSrc = "/about image.png";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
 
   useEffect(() => {
@@ -45,16 +45,12 @@ export const About = () => {
 
         <div className="mb-8">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
+            <img
+              src={aboutImageSrc}
+              alt="[PHOTO About section]"
+              loading="eager"
               className="w-full h-full object-cover"
-            >
-              <source src={aboutVideoSrc} type="video/mp4" />
-            </video>
+            />
           </div>
         </div>
 
@@ -105,16 +101,12 @@ export const About = () => {
 
         <div className="w-full md:max-w-lg md:justify-self-end">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
+            <img
+              src={aboutImageSrc}
+              alt="[PHOTO About section]"
+              loading="lazy"
               className="w-full h-full object-cover"
-            >
-              <source src={aboutVideoSrc} type="video/mp4" />
-            </video>
+            />
           </div>
         </div>
       </div>
