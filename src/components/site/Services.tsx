@@ -166,14 +166,14 @@ export const Services = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-l from-foreground/15 to-transparent" />
 
-                {/* Frosted glass label, centered-right */}
-                <div className="absolute right-5 top-1/2 -translate-y-1/2 glass-label px-5 py-3 max-w-[68%]">
-                  <p className="font-display normal-case tracking-normal font-bold text-base md:text-lg leading-tight text-[#9F3F5C] mb-3">
+                {/* Service label moved lower, no background panel */}
+                <div className="absolute left-6 right-6 bottom-6 md:bottom-8 max-w-[72%]">
+                  <p className="font-display normal-case tracking-normal font-bold text-base md:text-lg leading-tight text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.7)] mb-3">
                     {item.name}
                   </p>
                   <button
                     onClick={() => openBookingPanel(item.category, item.image)}
-                    className="px-3 py-2 bg-primary text-primary-foreground text-[10px] font-display hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    className="px-3 py-2 bg-[#9F3F5C] text-white text-[10px] font-display hover:bg-[#8E3852] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9F3F5C] focus-visible:ring-offset-2"
                   >
                     Book now
                   </button>

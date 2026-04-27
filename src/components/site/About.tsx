@@ -6,7 +6,7 @@ export const About = () => {
     >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
         {/* Left — copy */}
-        <div className="order-2 md:order-1">
+        <div className="order-1 md:order-1">
           <h2 className="inline-block mb-8">
             <span className="font-display font-black text-foreground text-3xl md:text-5xl tracking-tight normal-case">
               Trex Beaux Experience
@@ -34,7 +34,7 @@ export const About = () => {
         </div>
 
         {/* Right — portrait */}
-        <div className="order-1 md:order-2">
+        <div className="order-2 md:order-2 w-full md:max-w-l md:justify-self-end">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
             <video
               src="/Screen%20Recording%202026-04-27%20182213.mp4"

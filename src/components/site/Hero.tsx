@@ -6,8 +6,8 @@ export const Hero = () => {
       id="home"
       className="relative w-full h-screen min-h-[640px] overflow-hidden bg-background"
     >
-      {/* 8-tile mosaic: 4x2 desktop, 2x4 mobile */}
-      <div className="absolute inset-0 grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-0">
+      {/* 6-tile mosaic: 3x2 desktop, 2x3 mobile */}
+      <div className="absolute inset-0 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-0">
         {HERO_TILES.map((tile, i) => (
           <div key={i} className="relative overflow-hidden">
             <img

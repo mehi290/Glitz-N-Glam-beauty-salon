@@ -116,16 +116,14 @@ export const TEAM = [
 export const HERO_IMAGE = u("photo-1560869713-7d0954430a87", 1800);
 export const ABOUT_IMAGE = u("photo-1522337360788-8b13dee7a37e", 1200);
 
-// 8-tile hero mosaic — beauty / hair / hands / face
+// 6-tile hero mosaic — beauty / hair / hands / face
 export const HERO_TILES: { src: string; alt: string }[] = [
-  { src: u("photo-1595476108010-b4d1f102b1b1", 800), alt: "[PHOTO — braided hair]" },
   {
     src: "/JESSICA CUDA • PHOTOGRAPHER on Instagram_ “It’s been an incredibly busy past few months of shoots to a point that I was so exhausted and I smashed my camera and lense to the ground 🤣…”.jpg",
     alt: "[PHOTO — bridal portrait]",
   },
   { src: u("photo-1604654894610-df63bc536371", 800), alt: "[PHOTO — manicured hands]" },
   { src: u("photo-1522337360788-8b13dee7a37e", 800), alt: "[PHOTO — hair texture]" },
-  { src: u("photo-1571875257727-256c39da42af", 800), alt: "[PHOTO — eye makeup]" },
   { src: u("photo-1632345031435-8727f6897d53", 800), alt: "[PHOTO — rings & nails]" },
   { src: u("photo-1487412947147-5cebf100ffc2", 800), alt: "[PHOTO — smile portrait]" },
   { src: u("photo-1560066984-138dadb4c035", 800), alt: "[PHOTO — hand in hair]" },

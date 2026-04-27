@@ -39,17 +39,18 @@ export const Sidebar = () => {
       <div className="md:hidden fixed top-0 inset-x-0 z-50 flex items-center justify-between px-5 h-14 bg-background/85 backdrop-blur border-b border-border">
         <button
           onClick={() => handleNav("home")}
-          className="font-editorial text-xl tracking-tight"
+          className="font-editorial font-bold text-xl tracking-tight"
           aria-label="Tres Beaux home"
         >
           Tres Beaux
         </button>
         <div className="flex items-center gap-3">
           <button
+            onClick={() => window.dispatchEvent(new Event("open-booking-flow"))}
             className="px-3 py-1.5 border border-foreground/20 text-foreground text-[10px] font-display hover:bg-foreground hover:text-background transition-colors"
-            aria-label="Log in"
+            aria-label="Book now"
           >
-            Log In
+            Book Now
           </button>
           <button
             onClick={() => setOpen((o) => !o)}
