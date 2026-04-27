@@ -11,8 +11,8 @@ const Index = () => {
       <Sidebar />
       <main className="md:pl-[200px] pt-14 md:pt-0">
         <Hero />
-        <About />
         <Services />
+        <About />
         <Testimonials />
         <Footer />
       </main>

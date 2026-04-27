@@ -1,60 +1,35 @@
-## Goal
+## Changes
 
-Restyle ONLY the Testimonials section to match the reference video: a dark, atmospheric strip where multiple testimonial cards continuously slide horizontally on their own, each card showing the reviewer's name on top, a row of gold star icons, then the quote text below.
+### 1. Services — auto-scrolling marquee (like Testimonials)
+File: `src/components/site/Services.tsx`
+- Replace the manual `overflow-x-auto` slider with an infinite horizontal marquee using the existing `animate-marquee` utility.
+- Duplicate `items` (`[...items, ...items]`) so the loop is seamless.
+- Wrap the track in a `group` and use `group-hover:[animation-play-state:paused]` so hovering pauses the scroll.
+- Keep the section heading, filter chips, and the prev/next arrow buttons. Arrows will nudge by scrolling the track via a ref (the marquee animation continues; nudge offsets via `transform` are tricky, so simplest: arrows scroll the outer container which is set to `overflow-hidden`). To preserve arrow nudge, we'll keep arrows but make them re-trigger animation direction via toggling a `[animation-direction:reverse]` class for the back arrow as a brief tap, OR remove arrows since marquee is auto. Decision: remove arrows for a cleaner Testimonials-style look (matches the reference behavior).
+- Keep the filter chips functional — switching filter rebuilds the marquee with the filtered items.
+- Card sizing stays the same (`aspect-square`, ~38% width on lg).
 
-Nothing else on the site changes (Hero, About, Services, Footer stay as they are).
+### 2. Testimonials — full salon photo background, no white overlay
+File: `src/components/site/Testimonials.tsx`
+- Remove the white gradient overlay div entirely.
+- Set the background image to full opacity (no `opacity-30`) so the salon picture shows clearly.
+- Keep section base as a fallback dark color in case the image fails.
+- Re-tune text and cards for legibility on a photo background:
+  - Heading and subheading: white with a subtle text shadow.
+  - Cards: semi-transparent dark glass (`bg-black/40 backdrop-blur-md border-white/15`) with white text and gold stars.
+  - Arrow buttons: glass style (white/10 bg, white icon).
+- Optionally add a very light dark gradient at top/bottom only for header readability (kept minimal so the picture remains the hero of the section).
 
----
-
-## What the new Testimonials section looks like
-
-- Full-width dark section with a soft moody background (subtle dark image or gradient + overlay) so the cards float on top of it.
-- Section header on top:
-  - Small gold accent line + heading "What Our Customers Say"
-  - Subline "What customers think about us"
-- A horizontal track of testimonial cards that **auto-scrolls continuously** from right to left (infinite marquee, seamless loop).
-- 3 cards visible at once on desktop, 2 on tablet, 1 on mobile.
-- Pauses on hover so the user can read.
-- Optional left/right chevron arrows on the sides for manual nudging (visual match to the video).
-
-### Card design (matches video)
-
-- Dark translucent rounded rectangle with subtle border and soft glass blur.
-- Top: reviewer name in a clean lowercase white font (e.g. "joseph cordray").
-- Middle: 5 gold star icons centered.
-- Bottom: short quote in light gray, centered, 3–4 lines.
-
----
-
-## Implementation
-
-### 1. `src/components/site/data.ts`
-- Expand `TESTIMONIALS` to ~6 entries (so the marquee feels full) with `name`, `rating` (number 1–5), and `quote`. Drop the unused `location` field for this layout.
-
-### 2. `src/components/site/Testimonials.tsx` (rewrite)
-- Replace the current single-quote slider with a marquee:
-  - Wrapper section: `bg-[#0c0c0c]` (or existing dark token) with a subtle background image + dark overlay.
-  - Header block with gold underline accent.
-  - Track: a flex row containing the testimonials list rendered **twice back-to-back** so the CSS animation can loop seamlessly (`translateX(0) → translateX(-50%)`).
-  - Each card: fixed width (`w-[320px] md:w-[360px]`), dark glass styling (`bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6`).
-  - Star row: 5 `lucide-react` `Star` icons, filled, `text-yellow-400`.
-  - `group-hover:[animation-play-state:paused]` to pause on hover.
-  - Side arrows (decorative, scroll the container by a card width on click).
-
-### 3. `tailwind.config.ts`
-- Add a `marquee` keyframe and animation:
-  - `marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } }`
-  - `animation: { marquee: 'marquee 40s linear infinite' }`
-
-### 4. No changes to
-- Hero, About, Services, Footer, Sidebar, Index page order, fonts, or color tokens.
-
----
+### 3. Page order — About moves below Services
+File: `src/pages/Index.tsx`
+New order:
+```text
+Hero → Services → About → Testimonials → Footer
+```
+Update the `NAV_LINKS` order in `src/components/site/data.ts` to match: Home, Services, About, Testimonials, Contact.
 
 ## Files touched
-
-- `src/components/site/Testimonials.tsx` — rewritten
-- `src/components/site/data.ts` — testimonials array updated (name + rating + quote)
-- `tailwind.config.ts` — add marquee keyframe + animation
-
-That's it — small, surgical, and limited to the testimonials block.
+- `src/components/site/Services.tsx` — marquee conversion
+- `src/components/site/Testimonials.tsx` — remove white overlay, restyle for photo bg
+- `src/pages/Index.tsx` — reorder sections
+- `src/components/site/data.ts` — reorder nav links
