@@ -134,6 +134,15 @@ All colors MUST be HSL.
     letter-spacing: 0.18em;
     text-transform: uppercase;
   }
+  .font-script {
+    font-family: 'Allura', 'Great Vibes', cursive;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .text-shadow-hero {
+    text-shadow: 0 2px 18px hsl(240 30% 10% / 0.45);
+  }
   .glass-label {
     background: hsl(0 0% 100% / 0.65);
     backdrop-filter: blur(14px) saturate(140%);
