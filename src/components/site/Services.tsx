@@ -1,10 +1,8 @@
-import { useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useMemo, useState } from "react";
 import { SERVICES_FLAT, SERVICE_FILTERS } from "./data";
 
 export const Services = () => {
   const [filter, setFilter] = useState<string>("All");
-  const ref = useRef<HTMLDivElement>(null);
 
   const items = useMemo(
     () =>
@@ -14,15 +12,11 @@ export const Services = () => {
     [filter]
   );
 
-  const scrollBy = (dir: 1 | -1) => {
-    const el = ref.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: "smooth" });
-  };
+  const loop = [...items, ...items];
 
   return (
     <section id="services" className="bg-lavender py-20 md:py-28">
-      <div className="px-6 md:px-16 mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+      <div className="px-6 md:px-16 mb-10 md:mb-14">
         <div>
           {/* Heading with white strikethrough accent */}
           <h2 className="relative inline-block">
@@ -55,55 +49,39 @@ export const Services = () => {
             })}
           </div>
         </div>
-
-        {/* Desktop arrows */}
-        <div className="hidden md:flex gap-2">
-          <button
-            onClick={() => scrollBy(-1)}
-            aria-label="Previous"
-            className="w-12 h-12 border border-foreground/30 hover:bg-foreground hover:text-background transition-colors flex items-center justify-center"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => scrollBy(1)}
-            aria-label="Next"
-            className="w-12 h-12 border border-foreground/30 hover:bg-foreground hover:text-background transition-colors flex items-center justify-center"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
       </div>
 
-      {/* Single horizontal slider */}
-      <div
-        ref={ref}
-        className="flex gap-5 overflow-x-auto snap-x snap-mandatory no-scrollbar pl-6 md:pl-16 pr-6 md:pr-16 pb-2"
-      >
-        {items.map((item) => (
-          <article
-            key={`${item.category}-${item.name}`}
-            className="snap-start shrink-0 w-[82%] sm:w-[60%] md:w-[44%] lg:w-[38%] aspect-square relative overflow-hidden group cursor-pointer"
-          >
-            <img
-              src={item.image}
-              alt={`[PHOTO ${item.name}]`}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-foreground/15 to-transparent" />
+      {/* Auto-scrolling marquee */}
+      <div className="group overflow-hidden">
+        <div
+          key={filter}
+          className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused] pl-6 md:pl-16"
+        >
+          {loop.map((item, idx) => (
+            <article
+              key={`${item.category}-${item.name}-${idx}`}
+              className="shrink-0 w-[82vw] sm:w-[60vw] md:w-[44vw] lg:w-[34vw] xl:w-[28vw] aspect-square relative overflow-hidden cursor-pointer"
+            >
+              <img
+                src={item.image}
+                alt={`[PHOTO ${item.name}]`}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-foreground/15 to-transparent" />
 
-            {/* Frosted glass label, centered-right */}
-            <div className="absolute right-5 top-1/2 -translate-y-1/2 glass-label px-5 py-3 max-w-[65%]">
-              <p className="font-display text-[9px] text-muted-foreground mb-1">
-                {item.category}
-              </p>
-              <p className="font-display normal-case tracking-normal font-bold text-base md:text-lg leading-tight text-foreground">
-                {item.name}
-              </p>
-            </div>
-          </article>
-        ))}
+              {/* Frosted glass label, centered-right */}
+              <div className="absolute right-5 top-1/2 -translate-y-1/2 glass-label px-5 py-3 max-w-[65%]">
+                <p className="font-display text-[9px] text-muted-foreground mb-1">
+                  {item.category}
+                </p>
+                <p className="font-display normal-case tracking-normal font-bold text-base md:text-lg leading-tight text-foreground">
+                  {item.name}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
