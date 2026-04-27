@@ -16,33 +16,37 @@ export const SERVICE_CATEGORIES: {
   {
     category: "Hair",
     items: [
-      { name: "[SIGNATURE CUT]", image: u("photo-1560066984-138dadb4c035") },
-      { name: "[COLOR & BALAYAGE]", image: u("photo-1522337360788-8b13dee7a37e") },
-      { name: "[BLOWOUT]", image: u("photo-1487412947147-5cebf100ffc2") },
-      { name: "[BRIDAL STYLING]", image: u("photo-1595476108010-b4d1f102b1b1") },
+      { name: "HAIR CUT", image: u("photo-1560066984-138dadb4c035") },
+      { name: "COLOR & BALAYAGE", image: u("photo-1522337360788-8b13dee7a37e") },
+      {
+        name: "Nanoplastic",
+        image: u("photo-1522337360788-8b13dee7a37e"),
+      },
+      { name: "BRIDAL MAKE UP", image: u("photo-1487412947147-5cebf100ffc2") },
+      { name: "BLOW DRY", image: u("photo-1595476108010-b4d1f102b1b1") },
     ],
   },
   {
     category: "Nails",
     items: [
-      { name: "[CLASSIC MANICURE]", image: u("photo-1604654894610-df63bc536371") },
-      { name: "[GEL EXTENSIONS]", image: u("photo-1632345031435-8727f6897d53") },
-      { name: "[LUXURY PEDICURE]", image: u("photo-1610992015732-2449b76344bc") },
+      { name: "CLASSIC MANICURE", image: u("photo-1604654894610-df63bc536371") },
+      { name: "GEL EXTENSIONS", image: u("photo-1632345031435-8727f6897d53") },
+      { name: "PEDICURE", image: u("photo-1610992015732-2449b76344bc") },
     ],
   },
   {
     category: "Makeup",
     items: [
-      { name: "[EVENT MAKEUP]", image: u("photo-1487412720507-e7ab37603c6f") },
-      { name: "[BRIDAL MAKEUP]", image: u("photo-1503236823255-94609f598e71") },
-      { name: "[LASH & BROW]", image: u("photo-1571875257727-256c39da42af") },
+      { name: "EYE LASH", image: u("photo-1571875257727-256c39da42af") },
+      { name: "EVENT MAKEUP", image: u("photo-1503236823255-94609f598e71") },
+      { name: "BROW LIFT & TINTING", image: u("photo-1571875257727-256c39da42af") },
     ],
   },
   {
     category: "Skin",
     items: [
-      { name: "[SIGNATURE FACIAL]", image: u("photo-1570172619644-dfd03ed5d881") },
-      { name: "[ADVANCED SKINCARE]", image: u("photo-1512290923902-8a9f81dc236c") },
+      { name: "SIGNATURE FACIAL", image: u("photo-1570172619644-dfd03ed5d881") },
+      { name: "ADVANCED SKINCARE", image: u("photo-1512290923902-8a9f81dc236c") },
     ],
   },
 ];
@@ -115,7 +119,10 @@ export const ABOUT_IMAGE = u("photo-1522337360788-8b13dee7a37e", 1200);
 // 8-tile hero mosaic — beauty / hair / hands / face
 export const HERO_TILES: { src: string; alt: string }[] = [
   { src: u("photo-1595476108010-b4d1f102b1b1", 800), alt: "[PHOTO — braided hair]" },
-  { src: u("photo-1503236823255-94609f598e71", 800), alt: "[PHOTO — bridal portrait]" },
+  {
+    src: "/JESSICA CUDA • PHOTOGRAPHER on Instagram_ “It’s been an incredibly busy past few months of shoots to a point that I was so exhausted and I smashed my camera and lense to the ground 🤣…”.jpg",
+    alt: "[PHOTO — bridal portrait]",
+  },
   { src: u("photo-1604654894610-df63bc536371", 800), alt: "[PHOTO — manicured hands]" },
   { src: u("photo-1522337360788-8b13dee7a37e", 800), alt: "[PHOTO — hair texture]" },
   { src: u("photo-1571875257727-256c39da42af", 800), alt: "[PHOTO — eye makeup]" },

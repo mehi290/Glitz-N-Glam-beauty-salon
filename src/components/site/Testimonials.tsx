@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { TESTIMONIALS } from "./data";
 
 export const Testimonials = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const loop = [...TESTIMONIALS, ...TESTIMONIALS];
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
 
   const nudge = (dir: 1 | -1) => {
     const el = trackRef.current;
@@ -34,20 +35,23 @@ export const Testimonials = () => {
         <div className="mb-12 md:mb-16">
           <div className="flex items-center gap-4 mb-3">
             <span className="block h-px w-14 bg-yellow-500/80" />
-            <h2 className="text-white text-3xl md:text-5xl font-semibold tracking-tight drop-shadow-lg">
+            <h2 className="text-white text-3xl md:text-5xl font-black tracking-tight drop-shadow-lg font-display normal-case">
               What Our Customers Say
             </h2>
           </div>
-          <p className="text-white/80 text-sm md:text-base ml-[72px] drop-shadow">
-            What customers think about us?
-          </p>
         </div>
 
         <div className="relative group">
+          {showSwipeHint && (
+            <p className="md:hidden mb-3 text-white/75 text-xs">Swipe for more testimonials</p>
+          )}
+
           <div
             ref={trackRef}
             className="overflow-x-auto [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none" }}
+            onTouchStart={() => setShowSwipeHint(false)}
+            onMouseDown={() => setShowSwipeHint(false)}
           >
             <div className="flex gap-6 w-max animate-marquee group-hover:[animation-play-state:paused]">
               {loop.map((t, idx) => (
@@ -77,14 +81,14 @@ export const Testimonials = () => {
           <button
             onClick={() => nudge(-1)}
             aria-label="Previous testimonials"
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white items-center justify-center backdrop-blur"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white items-center justify-center backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => nudge(1)}
             aria-label="Next testimonials"
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white items-center justify-center backdrop-blur"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white items-center justify-center backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

@@ -23,14 +23,26 @@ export const Hero = () => {
       {/* subtle dark overlay so the tagline reads on every tile */}
       <div className="absolute inset-0 bg-foreground/15 pointer-events-none" />
 
+      {/* Desktop top-right booking strip */}
+      <div className="hidden md:flex fixed top-0 right-0 z-50 h-16 min-w-[320px] bg-transparent">
+        <button
+          onClick={() => window.dispatchEvent(new Event("open-booking-flow"))}
+          className="w-full h-full bg-[#9F3F5C] text-white font-display text-[20px] tracking-[0.08em] [text-shadow:0_2px_10px_rgba(0,0,0,0.45)] hover:bg-[#8E3852] transition-colors"
+        >
+          BOOK NOW
+        </button>
+      </div>
+
       {/* Tagline centered across the horizontal seam */}
       <div className="absolute inset-0 flex items-center justify-center px-6 pointer-events-none">
-        <h1 className="font-display text-background text-shadow-hero text-center font-bold leading-[1.15] text-[18px] sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl max-w-5xl">
-          Tres Beaux <span className="px-1">×</span> You
-          <br className="md:hidden" />
-          <span className="hidden md:inline"> </span>
-          Is Our Favorite Collaboration
-        </h1>
+        <div className="text-center text-background text-shadow-hero max-w-5xl">
+          <h1 className="font-display font-bold leading-[1.1] text-[18px] sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
+            TREX BEAUX SALON
+          </h1>
+          <p className="mt-3 sm:mt-4 font-editorial text-[#FFE6F1] [text-shadow:0_2px_14px_rgba(0,0,0,0.75)] text-2xl sm:text-3xl md:text-5xl lg:text-6xl">
+            Discover The New You
+          </p>
+        </div>
       </div>
     </section>
   );
