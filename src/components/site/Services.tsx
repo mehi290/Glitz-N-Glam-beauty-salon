@@ -100,6 +100,7 @@ export const Services = () => {
   const availableDates = ["15 Jul", "16 Jul", "17 Jul", "18 Jul"];
   const availableTimes = ["10:00 AM", "11:30 AM", "1:00 PM", "2:00 PM", "3:30 PM", "5:00 PM"];
   const selectedPrice = selectedService ? getRandomPrice(selectedService) : "";
+  const isVideoFile = (src: string) => /\.(mp4|webm|mov|m4v)$/i.test(src);
 
   return (
     <>
@@ -158,12 +159,23 @@ export const Services = () => {
                 key={`${item.category}-${item.name}-${idx}`}
                 className="shrink-0 w-[82vw] sm:w-[60vw] md:w-[44vw] lg:w-[34vw] xl:w-[28vw] aspect-square relative overflow-hidden cursor-pointer"
               >
-                <img
-                  src={item.image}
-                  alt={`[PHOTO ${item.name}]`}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
+                {isVideoFile(item.image) ? (
+                  <video
+                    src={item.image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                ) : (
+                  <img
+                    src={item.image}
+                    alt={`[PHOTO ${item.name}]`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-l from-foreground/15 to-transparent" />
 
                 {/* Service label moved lower, no background panel */}
@@ -205,11 +217,22 @@ export const Services = () => {
         <div className="fixed inset-0 z-[70] bg-black/45 backdrop-blur-sm p-0 md:p-6">
           <div className="bg-[#e4cad6] w-full h-full md:h-[88vh] md:max-w-6xl mx-auto grid md:grid-cols-2 overflow-hidden">
             <div className="relative min-h-[36vh] md:min-h-full">
-              <img
-                src={bookingImage}
-                alt={`[PHOTO ${bookingCategory}]`}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+              {isVideoFile(bookingImage) ? (
+                <video
+                  src={bookingImage}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <img
+                  src={bookingImage}
+                  alt={`[PHOTO ${bookingCategory}]`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              )}
             </div>
 
             <div className="bg-[#e5cad8] p-6 md:p-8 flex flex-col">

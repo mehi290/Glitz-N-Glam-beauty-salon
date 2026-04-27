@@ -16,20 +16,22 @@ export const SERVICE_CATEGORIES: {
   {
     category: "Hair",
     items: [
-      { name: "HAIR CUT", image: u("photo-1560066984-138dadb4c035") },
-      { name: "COLOR & BALAYAGE", image: u("photo-1522337360788-8b13dee7a37e") },
+      { name: "HAIR CUT", image: "/hair cut video.mp4" },
+      { name: "COLOR & BALAYAGE", image: "/hair color.mp4" },
       {
         name: "Nanoplastic",
         image: u("photo-1522337360788-8b13dee7a37e"),
       },
       { name: "BRIDAL MAKE UP", image: u("photo-1487412947147-5cebf100ffc2") },
-      { name: "BLOW DRY", image: u("photo-1595476108010-b4d1f102b1b1") },
+      { name: "BLOW DRY", image: "/keratin.jpg" },
+      { name: "HAIR STYLING", image: "/hair_style.mp4" },
+      { name: "HAIR EXTENSION", image: "/hair extension.mp4" },
     ],
   },
   {
     category: "Nails",
     items: [
-      { name: "CLASSIC MANICURE", image: u("photo-1604654894610-df63bc536371") },
+      { name: "MANICURE", image: "/pedi and mani.jpeg" },
       { name: "GEL EXTENSIONS", image: u("photo-1632345031435-8727f6897d53") },
       { name: "PEDICURE", image: u("photo-1610992015732-2449b76344bc") },
     ],
@@ -37,9 +39,9 @@ export const SERVICE_CATEGORIES: {
   {
     category: "Makeup",
     items: [
-      { name: "EYE LASH", image: u("photo-1571875257727-256c39da42af") },
+      { name: "EYE LASH", image: "/eye lash.mp4" },
       { name: "EVENT MAKEUP", image: u("photo-1503236823255-94609f598e71") },
-      { name: "BROW LIFT & TINTING", image: u("photo-1571875257727-256c39da42af") },
+      { name: "BROW LIFT & TINTING", image: "/lashes and brows.jpg" },
     ],
   },
   {
