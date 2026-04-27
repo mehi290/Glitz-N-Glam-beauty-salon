@@ -1,57 +1,89 @@
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { SERVICE_CATEGORIES } from "./data";
+import { SERVICES_FLAT, SERVICE_FILTERS } from "./data";
 
-const ServiceRow = ({
-  category,
-  items,
-}: {
-  category: string;
-  items: { name: string; image: string }[];
-}) => {
+export const Services = () => {
+  const [filter, setFilter] = useState<string>("All");
   const ref = useRef<HTMLDivElement>(null);
+
+  const items = useMemo(
+    () =>
+      filter === "All"
+        ? SERVICES_FLAT
+        : SERVICES_FLAT.filter((s) => s.category === filter),
+    [filter]
+  );
 
   const scrollBy = (dir: 1 | -1) => {
     const el = ref.current;
     if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: "smooth" });
   };
 
   return (
-    <div className="mb-16 md:mb-24">
-      <div className="flex items-end justify-between mb-6 px-6 md:px-16">
+    <section id="services" className="bg-lavender py-20 md:py-28">
+      <div className="px-6 md:px-16 mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <div>
-          <p className="font-display text-[11px] text-muted-foreground mb-2">
-            Category
-          </p>
-          <h3 className="font-editorial text-3xl md:text-5xl">{category}</h3>
+          {/* Heading with white strikethrough accent */}
+          <h2 className="relative inline-block">
+            <span className="font-display font-black text-foreground text-5xl md:text-7xl tracking-tight normal-case">
+              Services
+            </span>
+            <span
+              aria-hidden
+              className="absolute left-0 right-0 top-1/2 h-[4px] bg-background -z-0"
+            />
+          </h2>
+
+          {/* Filter chips */}
+          <div className="mt-8 flex flex-wrap gap-2">
+            {SERVICE_FILTERS.map((f) => {
+              const active = f === filter;
+              return (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f)}
+                  className={`font-display text-[10px] px-4 py-2 border transition-colors ${
+                    active
+                      ? "bg-foreground text-background border-foreground"
+                      : "bg-transparent text-foreground border-foreground/20 hover:border-foreground"
+                  }`}
+                >
+                  {f}
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {/* Desktop arrows */}
         <div className="hidden md:flex gap-2">
           <button
             onClick={() => scrollBy(-1)}
             aria-label="Previous"
-            className="w-11 h-11 border border-border hover:bg-foreground hover:text-background transition-colors flex items-center justify-center"
+            className="w-12 h-12 border border-foreground/30 hover:bg-foreground hover:text-background transition-colors flex items-center justify-center"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             onClick={() => scrollBy(1)}
             aria-label="Next"
-            className="w-11 h-11 border border-border hover:bg-foreground hover:text-background transition-colors flex items-center justify-center"
+            className="w-12 h-12 border border-foreground/30 hover:bg-foreground hover:text-background transition-colors flex items-center justify-center"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       </div>
 
+      {/* Single horizontal slider */}
       <div
         ref={ref}
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pl-6 md:pl-16 pr-6 md:pr-16 pb-2"
+        className="flex gap-5 overflow-x-auto snap-x snap-mandatory no-scrollbar pl-6 md:pl-16 pr-6 md:pr-16 pb-2"
       >
         {items.map((item) => (
           <article
-            key={item.name}
-            className="snap-start shrink-0 w-[78%] sm:w-[55%] md:w-[40%] lg:w-[32%] aspect-[3/4] relative overflow-hidden group cursor-pointer"
+            key={`${item.category}-${item.name}`}
+            className="snap-start shrink-0 w-[82%] sm:w-[60%] md:w-[44%] lg:w-[38%] aspect-square relative overflow-hidden group cursor-pointer"
           >
             <img
               src={item.image}
@@ -59,36 +91,20 @@ const ServiceRow = ({
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 glass-label px-5 py-3 max-w-[70%]">
-              <p className="font-display text-[10px] text-muted-foreground mb-1">
-                {category}
+            <div className="absolute inset-0 bg-gradient-to-l from-foreground/15 to-transparent" />
+
+            {/* Frosted glass label, centered-right */}
+            <div className="absolute right-5 top-1/2 -translate-y-1/2 glass-label px-5 py-3 max-w-[65%]">
+              <p className="font-display text-[9px] text-muted-foreground mb-1">
+                {item.category}
               </p>
-              <p className="font-editorial text-lg md:text-xl leading-tight">
+              <p className="font-display normal-case tracking-normal font-bold text-base md:text-lg leading-tight text-foreground">
                 {item.name}
               </p>
             </div>
           </article>
         ))}
       </div>
-    </div>
-  );
-};
-
-export const Services = () => {
-  return (
-    <section id="services" className="bg-background py-24 md:py-32">
-      <div className="px-6 md:px-16 mb-16">
-        <p className="font-display text-[11px] text-muted-foreground mb-4">
-          Services — 02
-        </p>
-        <h2 className="font-editorial text-4xl md:text-7xl leading-tight max-w-3xl">
-          A complete editorial of beauty services.
-        </h2>
-      </div>
-      {SERVICE_CATEGORIES.map((c) => (
-        <ServiceRow key={c.category} category={c.category} items={c.items} />
-      ))}
     </section>
   );
 };
