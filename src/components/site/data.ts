@@ -16,16 +16,16 @@ export const SERVICE_CATEGORIES: {
   {
     category: "Hair",
     items: [
-      { name: "HAIR CUT", image: "/hair cut video.mp4" },
-      { name: "COLOR & BALAYAGE", image: "/hair color.mp4" },
+      { name: "HAIR CUT", image: "/hair cut.png" },
+      { name: "COLOR & BALAYAGE", image: "/hair color.png" },
       {
         name: "Nanoplastic",
         image: "/nano.png",
       },
-      { name: "BRIDAL MAKE UP", image: u("photo-1487412947147-5cebf100ffc2") },
+      { name: "BRIDAL MAKE UP", image: "/bridal make up.png" },
       { name: "BLOW DRY", image: "/keratin.jpg" },
-      { name: "HAIR STYLING", image: "/hair_style.mp4" },
-      { name: "HAIR EXTENSION", image: "/hair extension.mp4" },
+      { name: "HAIR STYLING", image: "/hair style.png" },
+      { name: "HAIR EXTENSION", image: "/hair extension.png" },
     ],
   },
   {
