@@ -1,50 +1,36 @@
-import { HERO_IMAGE } from "./data";
+import { HERO_TILES } from "./data";
 
 export const Hero = () => {
-  const scroll = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex items-end overflow-hidden"
+      className="relative w-full h-screen min-h-[640px] overflow-hidden bg-background"
     >
-      <img
-        src={HERO_IMAGE}
-        alt="[HERO PHOTO — editorial beauty model]"
-        className="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-background/30" />
-
-      <div className="relative z-10 w-full px-6 md:px-16 pb-16 md:pb-24 pt-28 md:pt-20">
-        <div className="max-w-5xl">
-          <p className="font-display text-[11px] text-foreground/80 mb-6">
-            Est. [YEAR] · [CITY]
-          </p>
-          <h1 className="font-editorial text-5xl sm:text-7xl md:text-[8rem] leading-[0.95] text-foreground">
-            Tres <em className="not-italic md:italic">Beaux</em>
-            <br />
-            Beauty Salon.
-          </h1>
-          <p className="font-display text-xs sm:text-sm text-foreground/80 mt-8 max-w-md">
-            Tres Beaux × You is our favorite collaboration.
-          </p>
-          <div className="flex flex-wrap gap-3 mt-10">
-            <button
-              onClick={() => scroll("contact")}
-              className="px-8 py-4 bg-primary text-primary-foreground font-display text-[11px] hover:opacity-90 transition-opacity"
-            >
-              Book Appointment
-            </button>
-            <button
-              onClick={() => scroll("services")}
-              className="px-8 py-4 bg-secondary text-secondary-foreground font-display text-[11px] hover:opacity-90 transition-opacity"
-            >
-              Explore Services
-            </button>
+      {/* 8-tile mosaic: 4x2 desktop, 2x4 mobile */}
+      <div className="absolute inset-0 grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-0">
+        {HERO_TILES.map((tile, i) => (
+          <div key={i} className="relative overflow-hidden">
+            <img
+              src={tile.src}
+              alt={tile.alt}
+              loading={i < 4 ? "eager" : "lazy"}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
-        </div>
+        ))}
+      </div>
+
+      {/* subtle dark overlay so the tagline reads on every tile */}
+      <div className="absolute inset-0 bg-foreground/15 pointer-events-none" />
+
+      {/* Tagline centered across the horizontal seam */}
+      <div className="absolute inset-0 flex items-center justify-center px-6 pointer-events-none">
+        <h1 className="font-display text-background text-shadow-hero text-center font-bold leading-[1.15] text-[18px] sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl max-w-5xl">
+          Tres Beaux <span className="px-1">×</span> You
+          <br className="md:hidden" />
+          <span className="hidden md:inline"> </span>
+          Is Our Favorite Collaboration
+        </h1>
       </div>
     </section>
   );
