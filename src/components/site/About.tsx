@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { ABOUT_IMAGE } from "./data";
 
 export const About = () => {
-  const aboutTitle = "Trex Beaux Experience";
+  const aboutTitle = "About Trex Beaux";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
+  const [aboutVideoFailed, setAboutVideoFailed] = useState(false);
 
   useEffect(() => {
     let timeoutId: number | undefined;
@@ -28,7 +30,7 @@ export const About = () => {
     >
       <div className="max-w-7xl mx-auto md:hidden">
         <h2 className="inline-block mb-8">
-          <span className="font-display font-black text-[#9F3F5C] text-3xl tracking-tight normal-case">
+          <span className="font-display font-black text-[#9F3F5C] text-2xl tracking-tight normal-case">
             {typedAboutTitle}
             {typedAboutTitle.length < aboutTitle.length ? (
               <span className="inline-block w-[0.08em] h-[0.95em] ml-[0.08em] bg-[#9F3F5C] align-[-0.08em] animate-pulse" />
@@ -44,14 +46,26 @@ export const About = () => {
 
         <div className="mb-8">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <video
-              src="/Screen%20Recording%202026-04-27%20182213.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            {aboutVideoFailed ? (
+              <img
+                src={ABOUT_IMAGE}
+                alt="[PHOTO About section]"
+                loading="eager"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <video
+                src="/Screen%20Recording%202026-04-27%20182213.mp4"
+                poster={ABOUT_IMAGE}
+                preload="auto"
+                autoPlay
+                loop
+                muted
+                playsInline
+                onError={() => setAboutVideoFailed(true)}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            )}
           </div>
         </div>
 
@@ -72,7 +86,7 @@ export const About = () => {
       <div className="hidden max-w-7xl mx-auto md:grid md:grid-cols-2 gap-12 md:gap-20 items-center">
         <div>
           <h2 className="inline-block mb-8">
-            <span className="font-display font-black text-[#9F3F5C] text-3xl md:text-5xl tracking-tight normal-case">
+            <span className="font-display font-black text-[#9F3F5C] text-2xl md:text-4xl tracking-tight normal-case">
               {typedAboutTitle}
               {typedAboutTitle.length < aboutTitle.length ? (
                 <span className="inline-block w-[0.08em] h-[0.95em] ml-[0.08em] bg-[#9F3F5C] align-[-0.08em] animate-pulse" />
@@ -102,14 +116,26 @@ export const About = () => {
 
         <div className="w-full md:max-w-lg md:justify-self-end">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <video
-              src="/Screen%20Recording%202026-04-27%20182213.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            {aboutVideoFailed ? (
+              <img
+                src={ABOUT_IMAGE}
+                alt="[PHOTO About section]"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <video
+                src="/Screen%20Recording%202026-04-27%20182213.mp4"
+                poster={ABOUT_IMAGE}
+                preload="metadata"
+                autoPlay
+                loop
+                muted
+                playsInline
+                onError={() => setAboutVideoFailed(true)}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            )}
           </div>
         </div>
       </div>

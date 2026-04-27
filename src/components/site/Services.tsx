@@ -127,7 +127,7 @@ export const Services = () => {
           <div>
             {/* Services heading */}
             <h2 className="relative inline-block">
-              <span className="font-display font-black text-[#9F3F5C] text-3xl md:text-5xl tracking-tight normal-case">
+              <span className="font-display font-black text-[#9F3F5C] text-2xl md:text-4xl tracking-tight normal-case">
                 {typedServicesTitle}
                 {typedServicesTitle.length < servicesTitle.length ? (
                   <span className="inline-block w-[0.08em] h-[0.95em] ml-[0.08em] bg-[#9F3F5C] align-[-0.08em] animate-pulse" />
@@ -229,10 +229,11 @@ export const Services = () => {
       {bookingOpen && (
         <div className="fixed inset-0 z-[70] bg-black/45 backdrop-blur-sm p-0 md:p-6 h-[100dvh] overflow-y-auto">
           <div className="bg-[#e4cad6] w-full min-h-[100dvh] md:h-[88vh] md:max-w-6xl mx-auto grid md:grid-cols-2 md:overflow-hidden">
-            <div className="relative min-h-[26dvh] md:min-h-full">
+            <div className="hidden md:block relative min-h-[26dvh] md:min-h-full">
               {isVideoFile(bookingImage) ? (
                 <video
                   src={bookingImage}
+                  preload="metadata"
                   autoPlay
                   loop
                   muted

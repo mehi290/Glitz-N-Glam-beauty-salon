@@ -68,13 +68,13 @@ export const Hero = () => {
       {/* Tagline centered across the horizontal seam */}
       <div className="absolute inset-0 flex items-center justify-center px-5 sm:px-6 pointer-events-none">
         <div className="text-center text-background text-shadow-hero max-w-5xl">
-          <h1 className="font-display font-bold leading-[1.15] text-[17px] sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
+          <h1 className="font-display font-black md:font-bold leading-[1.15] text-[21px] sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
             {typedTitle}
             {typedTitle.length < title.length ? (
               <span className="inline-block w-[0.08em] h-[0.95em] ml-[0.08em] bg-background align-[-0.08em] animate-pulse" />
             ) : null}
           </h1>
-          <p className="mt-3 sm:mt-4 font-editorial text-[#FFE6F1] [text-shadow:0_2px_14px_rgba(0,0,0,0.75)] text-xl sm:text-3xl md:text-5xl lg:text-6xl max-w-[18ch] mx-auto leading-[1.2]">
+          <p className="mt-3 sm:mt-4 font-editorial font-semibold md:font-normal text-[#FFE6F1] [text-shadow:0_2px_14px_rgba(0,0,0,0.75)] text-3xl sm:text-3xl md:text-5xl lg:text-6xl max-w-[18ch] mx-auto leading-[1.2]">
             {typedSubtitle}
             {typedTitle.length >= title.length && typedSubtitle.length < subtitle.length ? (
               <span className="inline-block w-[0.08em] h-[0.9em] ml-[0.08em] bg-[#FFE6F1] align-[-0.08em] animate-pulse" />

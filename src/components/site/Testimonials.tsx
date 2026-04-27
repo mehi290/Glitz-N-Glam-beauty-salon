@@ -32,7 +32,7 @@ export const Testimonials = () => {
 
       <div className="relative max-w-7xl mx-auto">
         <div className="mb-12 md:mb-16">
-          <h2 className="text-white text-3xl md:text-5xl font-black tracking-tight drop-shadow-lg font-display normal-case">
+          <h2 className="text-white text-2xl md:text-4xl font-black tracking-tight drop-shadow-lg font-display normal-case">
             What Our Customers Say
           </h2>
         </div>

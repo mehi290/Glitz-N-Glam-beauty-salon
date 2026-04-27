@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 mb-16 items-start">
           <div>
             <p className="font-display text-xs opacity-60 mb-5">Find Us</p>
-            <h2 className="font-editorial text-3xl sm:text-4xl md:text-6xl leading-[1.05] mb-8 md:mb-10 max-w-4xl">
+            <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-8 md:mb-10 max-w-4xl">
               Visit Tres Beauty Lounge Dubai
             </h2>
 
