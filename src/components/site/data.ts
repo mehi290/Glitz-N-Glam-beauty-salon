@@ -2,8 +2,8 @@ export const NAV_LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
-  { id: "team", label: "Team" },
-  { id: "testimonials", label: "Voices" },
+
+  { id: "testimonials", label: "Testimonials" },
   { id: "contact", label: "Contact" },
 ];
 
