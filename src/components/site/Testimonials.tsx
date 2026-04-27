@@ -15,7 +15,7 @@ export const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="relative py-24 md:py-32 px-6 md:px-12 overflow-hidden bg-[#0c0c0c]"
+      className="relative py-24 md:py-32 px-6 md:px-12 overflow-hidden bg-white"
     >
       <div
         aria-hidden
