@@ -1,67 +1,107 @@
+## Match Reference Screenshots — Hero, About Us, Services
 
-# TRES BEAUX BEAUTY SALON — Build Plan
+Rebuild the top three sections of the page to mirror the reference screenshots exactly, in this order: **Hero → About Us → Services (horizontal slider)**.
 
-A single-page, mobile-first luxury beauty salon site with editorial styling, a fixed left sidebar nav, and smooth scroll between sections.
+---
 
-## Brand & Design System
-
-- **Palette**: White base, soft lavender `#E8E4F0`, soft pink `#F5C8D8`, bold blue `#2D2DCC` (primary CTA), pink `#E8A0B8` (secondary CTA).
-- **Tone**: Premium, modern, editorial.
-- **Typography**: Large editorial serif for hero/section titles, clean sans-serif for body and labels. Generous whitespace, oversized type, subtle hover transitions.
-- **Tokens**: All colors, fonts, gradients, and shadows defined as semantic tokens in `index.css` + `tailwind.config.ts` (no hard-coded colors in components).
-
-## Layout
+### 1. Hero — 8-tile image mosaic (screenshot 1)
 
 ```text
-┌──────┬────────────────────────────────────┐
-│      │  HERO  (full-bleed image + tagline)│
-│ SIDE │  ABOUT                             │
-│ NAV  │  SERVICES (horizontal carousels)   │
-│      │  TESTIMONIALS                      │
-│      │  TEAM                              │
-│      │  FOOTER / CONTACT                  │
-└──────┴────────────────────────────────────┘
+┌──────────┬──────────┬──────────┬──────────┐
+│  braid   │  face    │  hands   │  hair    │
+├──────────┼──────────┼──────────┼──────────┤
+│  eye     │  rings   │  smile   │ hand/hair│
+└──────────┴──────────┴──────────┴──────────┘
+        TRES BEAUX × YOU IS OUR FAVORITE
+                 COLLABORATION
+   (white uppercase, centered across the seam)
 ```
 
-- Sidebar: fixed left, vertical. Logo "TRES BEAUX" stacked at top. Vertical nav links (HOME, ABOUT, SERVICES, TEAM, CONTACT). Collapses to a top hamburger on mobile.
-- All sections share consistent vertical rhythm and anchor IDs for smooth scroll.
+- Full-viewport CSS grid: `grid-cols-4 grid-rows-2` desktop, `grid-cols-2 grid-rows-4` mobile.
+- 8 Unsplash beauty images (braid, portrait, manicured hands, hair texture, eye makeup, rings, smile, hand-in-hair).
+- Tagline overlaid centered, bold uppercase white display type with subtle text-shadow for legibility.
+- **Remove** the current "BOOK APPOINTMENT" / "EXPLORE SERVICES" buttons and the "Est. [YEAR]" line — reference has none in the hero body.
 
-## Sections
+### 2. About Us (screenshot 3)
 
-1. **Hero** — full-bleed Unsplash beauty image, oversized editorial headline, tagline "TRES BEAUX × YOU IS OUR FAVORITE COLLABORATION", bold blue **BOOK APPOINTMENT** button (visual only for now).
-2. **About** — two-column editorial layout: large image left, paragraph + small pink secondary CTA right. Bracketed placeholders like `[ABOUT COPY]`.
-3. **Services** — grouped into categories (Hair, Nails, Makeup, Skin). Each category is a **horizontal scrollable carousel** of service cards. Each card = Unsplash image with a centered-right frosted-glass label ("[SERVICE NAME]"). 12 services total distributed across categories. Snap-scroll on mobile, arrow controls on desktop.
-4. **Testimonials** — editorial quote carousel, large pull-quote styling, client name + `[LOCATION]`, soft lavender background.
-5. **Team / Stylists** — responsive grid of stylist cards: portrait image, name, specialty, short bio. All bracketed placeholders.
-6. **Footer / Contact** — address `[ADDRESS]`, phone `[PHONE]`, hours `[HOURS]`, social icons, secondary pink CTA "GET IN TOUCH".
+```text
+┌──────────────────────────┬───────────────────────────┐
+│                          │                           │
+│  About gorgeous          │                           │
+│  Tres Beaux world!       │                           │
+│  (script, soft pink)     │     [LARGE PORTRAIT       │
+│                          │      PHOTO — two          │
+│  About us                │      stylists / clients]  │
+│  (huge bold black,       │                           │
+│   underlined accent)     │                           │
+│                          │                           │
+│  Tres Beaux. That's like │                           │
+│  a beauty salon, but way │                           │
+│  way better!  (bold)     │                           │
+│                          │                           │
+│  [3 short paragraphs of  │                           │
+│   body copy in muted     │                           │
+│   gray]                  │                           │
+│                          │                           │
+└──────────────────────────┴───────────────────────────┘
+```
 
-## Interactions
+- Two-column layout, white background.
+- **Left column**:
+  - Script handwritten-style headline in soft pink: `About gorgeous Tres Beaux world!` (use a Google script font like *Allura* or *Great Vibes*).
+  - Below it, large bold sans heading `About us` with a thin pink underline accent through it.
+  - A bold lead line, then 3 short body paragraphs in muted gray (Inter, regular).
+- **Right column**: single tall portrait image, no frame, fills the column edge-to-edge.
+- Replace current About content with this structure; keep all copy as bracketed placeholders where appropriate, but use the reference copy as default text.
 
-- Smooth scroll between sections via anchor links.
-- Sidebar active link highlights based on scroll position.
-- Service carousels: drag/swipe on touch, arrow buttons on desktop, scroll-snap.
-- Hover states on all cards (subtle lift + image zoom).
-- Frosted-glass labels use `backdrop-blur` over images.
+### 3. Services — horizontal sliding carousel (screenshot 2)
 
-## Content Conventions
+```text
+Services   (huge bold heading, with white strikethrough accent over it)
 
-- All client-replaceable content uses bracketed placeholders: `[PHOTO]`, `[ADDRESS]`, `[PHONE]`, `[HOURS]`, `[STYLIST NAME]`, `[SERVICE PRICE]`, `[ABOUT COPY]`, `[TESTIMONIAL]`, etc.
-- Unsplash images sourced for: hair styling, nails, makeup, skincare, salon interiors, stylist portraits.
+┌─────────────────────┐ ┌─────────────────────┐ ┌────
+│                     │ │                     │ │
+│   [SERVICE PHOTO]   │ │   [SERVICE PHOTO]   │ │  …
+│                     │ │              ┌────┐ │ │
+│              ┌────┐ │ │              │FROST│ │ │
+│              │FROST│ │ │              │LABEL│ │ │
+│              └────┘ │ │              └────┘ │ │
+│                     │ │                     │ │
+└─────────────────────┘ └─────────────────────┘ └────
+        ← drag / swipe horizontally →
+```
 
-## Technical Notes
+- Section background: **soft lavender** (`hsl(var(--lavender))`) to match reference.
+- Heading "Services" — huge bold sans, with a thin white horizontal line struck through the text (decorative `::after` or absolute span).
+- **Single horizontal carousel** containing ALL services (not split into category sub-carousels — the reference is one long slider). Categories become a small filter row above the slider (Hair / Nails / Makeup / Skin / All).
+- Cards: tall portrait aspect (~4:5), large rounded corners optional but reference is square — keep square. Each card has the **frosted-glass label** (`backdrop-blur`, semi-transparent white, uppercase service name) positioned **centered-right** over the image, exactly like the reference.
+- Drag/swipe on touch, arrow buttons on desktop, scroll-snap.
+- Cards show ~2 at a time on desktop, ~1.2 on mobile so the next card peeks.
 
-- React + Vite + Tailwind + TypeScript (existing stack).
-- Components: `Sidebar`, `Hero`, `About`, `ServicesCarousel` (reused per category), `ServiceCard`, `Testimonials`, `Team`, `Footer`.
-- shadcn `Carousel` (embla) for service + testimonial scrollers.
-- shadcn `Sheet` for mobile sidebar drawer; desktop uses fixed positioned `<aside>`.
-- Design tokens in `index.css` (HSL) + Tailwind theme extension.
-- Single route `/` — no router changes needed.
-- No backend, no forms wired — `BOOK APPOINTMENT` is visual only.
-- Lazy-loaded images, `loading="lazy"`, responsive `srcset` via Unsplash size params for fast loading.
-- Fully responsive: sidebar → top bar under `md`, carousels become full-width swipeable, type scales down.
+### 4. Section order on the page
 
-## Out of Scope
+```text
+1. Hero (mosaic)
+2. About Us
+3. Services (horizontal slider)
+4. Team
+5. Testimonials
+6. Footer / Contact
+```
 
-- Booking backend / form submission.
-- CMS or auth.
-- Multi-page routing.
+---
+
+### Files to change
+
+- `src/index.css` — add a script font (e.g. Allura) via Google Fonts; add `.font-script` utility; ensure lavender token is exposed.
+- `tailwind.config.ts` — register `script` font family.
+- `src/components/site/data.ts` — add `HERO_TILES` (8 URLs) and `ABOUT_PORTRAIT` (single tall portrait); flatten services into a single list while keeping category tags for the filter.
+- `src/components/site/Hero.tsx` — rebuild as 8-tile mosaic with overlay tagline; remove CTAs.
+- `src/components/site/About.tsx` — rebuild with script headline + bold "About us" + lead + 3 paragraphs + right portrait.
+- `src/components/site/Services.tsx` — rebuild as a single horizontal slider with category filter chips, lavender background, struck-through heading, frosted-glass labels centered-right.
+- `src/pages/Index.tsx` — confirm order Hero → About → Services → Team → Testimonials → Footer.
+
+### Out of scope
+
+- Sidebar, Team, Testimonials, Footer untouched.
+- No booking form wiring; all CTAs remain visual only.
