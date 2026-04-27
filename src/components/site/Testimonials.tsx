@@ -27,7 +27,7 @@ export const Testimonials = () => {
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/95"
+        className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/95 bg-transparent"
       />
 
       <div className="relative max-w-7xl mx-auto">
