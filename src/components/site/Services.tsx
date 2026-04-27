@@ -3,6 +3,8 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { SERVICES_FLAT, SERVICE_FILTERS } from "./data";
 
 export const Services = () => {
+  const servicesTitle = "Services";
+  const [typedServicesTitle, setTypedServicesTitle] = useState("");
   const [filter, setFilter] = useState<string>("All");
   const scrollRef = useRef<HTMLDivElement>(null);
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -32,7 +34,6 @@ export const Services = () => {
   );
 
   const loop = [...items, ...items];
-  const [showSwipeHint, setShowSwipeHint] = useState(true);
 
   const openBookingPanel = (category: string, image: string) => {
     setBookingCategory(category);
@@ -84,6 +85,23 @@ export const Services = () => {
     return () => window.removeEventListener("open-booking-flow", handleOpenBooking);
   }, []);
 
+  useEffect(() => {
+    let timeoutId: number | undefined;
+
+    const typeTitle = (index: number) => {
+      if (index <= servicesTitle.length) {
+        setTypedServicesTitle(servicesTitle.slice(0, index));
+        timeoutId = window.setTimeout(() => typeTitle(index + 1), 90);
+      }
+    };
+
+    typeTitle(1);
+
+    return () => {
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, []);
+
   const getRandomPrice = (serviceName: string) => {
     let seed = 0;
     for (let i = 0; i < serviceName.length; i += 1) seed += serviceName.charCodeAt(i);
@@ -109,8 +127,11 @@ export const Services = () => {
           <div>
             {/* Services heading */}
             <h2 className="relative inline-block">
-              <span className="font-display font-black text-foreground text-3xl md:text-5xl tracking-tight normal-case">
-                Services
+              <span className="font-display font-black text-[#9F3F5C] text-3xl md:text-5xl tracking-tight normal-case">
+                {typedServicesTitle}
+                {typedServicesTitle.length < servicesTitle.length ? (
+                  <span className="inline-block w-[0.08em] h-[0.95em] ml-[0.08em] bg-[#9F3F5C] align-[-0.08em] animate-pulse" />
+                ) : null}
               </span>
             </h2>
 
@@ -122,7 +143,7 @@ export const Services = () => {
                   <button
                     key={f}
                     onClick={() => setFilter(f)}
-                    className={`font-display text-[10px] px-4 py-2 border transition-colors ${
+                    className={`font-display text-xs px-4 min-h-10 border transition-colors ${
                       active
                         ? "bg-foreground text-background border-foreground"
                         : "bg-transparent text-foreground border-foreground/20 hover:border-foreground"
@@ -138,17 +159,9 @@ export const Services = () => {
 
         {/* Auto-scrolling marquee + manual horizontal scroll */}
         <div className="group relative">
-          {showSwipeHint && (
-            <p className="md:hidden px-6 mb-3 text-[11px] text-muted-foreground">
-              Swipe for more services
-            </p>
-          )}
-
           <div
             ref={scrollRef}
             className="overflow-x-auto no-scrollbar"
-            onTouchStart={() => setShowSwipeHint(false)}
-            onMouseDown={() => setShowSwipeHint(false)}
           >
           <div
             key={filter}
@@ -185,7 +198,7 @@ export const Services = () => {
                   </p>
                   <button
                     onClick={() => openBookingPanel(item.category, item.image)}
-                    className="px-3 py-2 bg-[#9F3F5C] text-white text-[10px] font-display hover:bg-[#8E3852] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9F3F5C] focus-visible:ring-offset-2"
+                    className="px-4 min-h-10 bg-[#9F3F5C] text-white text-xs font-display hover:bg-[#8E3852] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9F3F5C] focus-visible:ring-offset-2"
                   >
                     Book now
                   </button>
@@ -214,9 +227,9 @@ export const Services = () => {
       </section>
 
       {bookingOpen && (
-        <div className="fixed inset-0 z-[70] bg-black/45 backdrop-blur-sm p-0 md:p-6">
-          <div className="bg-[#e4cad6] w-full h-full md:h-[88vh] md:max-w-6xl mx-auto grid md:grid-cols-2 overflow-hidden">
-            <div className="relative min-h-[36vh] md:min-h-full">
+        <div className="fixed inset-0 z-[70] bg-black/45 backdrop-blur-sm p-0 md:p-6 h-[100dvh] overflow-y-auto">
+          <div className="bg-[#e4cad6] w-full min-h-[100dvh] md:h-[88vh] md:max-w-6xl mx-auto grid md:grid-cols-2 md:overflow-hidden">
+            <div className="relative min-h-[26dvh] md:min-h-full">
               {isVideoFile(bookingImage) ? (
                 <video
                   src={bookingImage}
@@ -235,8 +248,8 @@ export const Services = () => {
               )}
             </div>
 
-            <div className="bg-[#e5cad8] p-6 md:p-8 flex flex-col">
-              <div className="flex items-center justify-between mb-6">
+            <div className="bg-[#e5cad8] p-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] md:p-8 flex flex-col min-h-0">
+              <div className="flex items-center justify-between mb-4 md:mb-6">
                 <h3 className="font-display text-xl md:text-2xl text-foreground normal-case">
                   {bookingStep === 1 && bookingCategory}
                   {bookingStep === 2 && "Choose Your Stylist"}
@@ -256,12 +269,12 @@ export const Services = () => {
 
               {bookingStep === 1 && (
                 <>
-                  <div className="grid grid-cols-[1fr_auto] gap-4 font-display text-[11px] text-foreground/70 mb-2">
+                  <div className="grid grid-cols-[1fr_auto] gap-4 font-display text-xs text-foreground/70 mb-2">
                     <p>Services</p>
                     <p>Price</p>
                   </div>
 
-                  <div className="overflow-y-auto pr-2 space-y-2 flex-1">
+                  <div className="overflow-y-auto pr-1 md:pr-2 space-y-2 flex-1 min-h-0">
                     {bookingItems.map((svc) => {
                       const active = selectedService === svc.name;
                       return (
@@ -284,7 +297,7 @@ export const Services = () => {
               )}
 
               {bookingStep === 2 && (
-                <div className="flex-1 grid grid-cols-2 gap-3">
+                <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-3 pr-1 md:pr-2">
                   {stylists.map((stylist) => {
                     const active = selectedStylist === stylist.name;
                     return (
@@ -309,15 +322,15 @@ export const Services = () => {
               )}
 
               {bookingStep === 3 && (
-                <div className="flex-1 space-y-6">
+                <div className="flex-1 min-h-0 overflow-y-auto space-y-6 pr-1 md:pr-2">
                   <div>
-                    <p className="font-display text-[11px] text-foreground/70 mb-2">Available Dates</p>
-                    <div className="grid grid-cols-4 gap-2">
+                    <p className="font-display text-xs text-foreground/70 mb-2">Available Dates</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       {availableDates.map((d) => (
                         <button
                           key={d}
                           onClick={() => setSelectedDate(d)}
-                          className={`px-3 py-3 border text-sm ${
+                          className={`px-3 min-h-11 border text-sm ${
                             selectedDate === d
                               ? "bg-[#9F3F5C] text-white border-[#9F3F5C]"
                               : "bg-white/45 border-foreground/15"
@@ -329,13 +342,13 @@ export const Services = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="font-display text-[11px] text-foreground/70 mb-2">Available Times</p>
+                    <p className="font-display text-xs text-foreground/70 mb-2">Available Times</p>
                     <div className="grid grid-cols-2 gap-2">
                       {availableTimes.map((t) => (
                         <button
                           key={t}
                           onClick={() => setSelectedTime(t)}
-                          className={`px-3 py-3 border text-sm ${
+                          className={`px-3 min-h-11 border text-sm ${
                             selectedTime === t
                               ? "bg-[#9F3F5C] text-white border-[#9F3F5C]"
                               : "bg-white/45 border-foreground/15"
@@ -350,14 +363,14 @@ export const Services = () => {
               )}
 
               {bookingStep === 4 && (
-                <div className="flex-1">
-                  <p className="font-display text-[11px] text-foreground/70 mb-3">How many people?</p>
-                  <div className="grid grid-cols-4 gap-2">
+                <div className="flex-1 min-h-0 overflow-y-auto">
+                  <p className="font-display text-xs text-foreground/70 mb-3">How many people?</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {[1, 2, 3, 4].map((n) => (
                       <button
                         key={n}
                         onClick={() => setPeopleCount(n)}
-                        className={`px-3 py-4 border text-base ${
+                        className={`px-3 min-h-12 border text-base ${
                           peopleCount === n
                             ? "bg-[#9F3F5C] text-white border-[#9F3F5C]"
                             : "bg-white/45 border-foreground/15"
@@ -371,7 +384,7 @@ export const Services = () => {
               )}
 
               {bookingStep === 5 && (
-                <div className="flex-1 space-y-4">
+                <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pr-1 md:pr-2">
                   <div className="bg-white/55 border border-foreground/15 p-4 space-y-2">
                     <div className="flex justify-between text-sm"><span>Service</span><span className="font-semibold">{selectedService}</span></div>
                     <div className="flex justify-between text-sm"><span>Stylist</span><span className="font-semibold">{selectedStylist}</span></div>
@@ -381,7 +394,7 @@ export const Services = () => {
                     <div className="flex justify-between text-sm"><span>Price</span><span className="font-semibold">{selectedPrice}</span></div>
                   </div>
                   <div>
-                    <p className="font-display text-[11px] text-foreground/70 mb-2">Phone number</p>
+                    <p className="font-display text-xs text-foreground/70 mb-2">Phone number</p>
                     <input
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
@@ -404,11 +417,11 @@ export const Services = () => {
                 </div>
               )}
 
-              <div className="mt-6 flex items-center justify-between gap-3">
+              <div className="mt-4 md:mt-6 flex items-center justify-between gap-3 shrink-0">
                 {bookingStep > 1 && bookingStep < 6 ? (
                   <button
                     onClick={() => setBookingStep((s) => s - 1)}
-                    className="px-5 py-3 border border-foreground/20 bg-white/35 text-foreground font-display text-[11px]"
+                    className="px-5 min-h-11 border border-foreground/20 bg-white/35 text-foreground font-display text-xs"
                   >
                     Back
                   </button>
@@ -425,7 +438,7 @@ export const Services = () => {
                       (bookingStep === 3 && (!selectedDate || !selectedTime)) ||
                       (bookingStep === 5 && !phoneNumber.trim())
                     }
-                    className={`px-8 py-4 font-display text-[11px] transition-opacity ${
+                    className={`px-8 min-h-12 font-display text-xs transition-opacity ${
                       (bookingStep === 1 && selectedService) ||
                       (bookingStep === 2 && selectedStylist) ||
                       (bookingStep === 3 && selectedDate && selectedTime) ||
@@ -440,7 +453,7 @@ export const Services = () => {
                 ) : (
                   <button
                     onClick={closeBookingPanel}
-                    className="px-8 py-4 bg-[#b89553] text-black font-display text-[11px] hover:opacity-90"
+                    className="px-8 min-h-12 bg-[#b89553] text-black font-display text-xs hover:opacity-90"
                   >
                     Book Another Appointment
                   </button>

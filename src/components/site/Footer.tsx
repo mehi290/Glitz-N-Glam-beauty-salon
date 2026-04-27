@@ -4,13 +4,13 @@ export const Footer = () => {
   return (
     <footer
       id="contact"
-      className="bg-foreground text-background py-20 md:py-28 px-6 md:px-16"
+      className="bg-foreground text-background py-16 md:py-28 px-6 md:px-16"
     >
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 mb-16 items-start">
           <div>
-            <p className="font-display text-[11px] opacity-60 mb-5">Find Us</p>
-            <h2 className="font-editorial text-5xl md:text-6xl leading-[1.05] mb-10 max-w-4xl">
+            <p className="font-display text-xs opacity-60 mb-5">Find Us</p>
+            <h2 className="font-editorial text-3xl sm:text-4xl md:text-6xl leading-[1.05] mb-8 md:mb-10 max-w-4xl">
               Visit Tres Beauty Lounge Dubai
             </h2>
 
@@ -37,7 +37,7 @@ export const Footer = () => {
 
             <button
               onClick={() => window.dispatchEvent(new Event("open-booking-flow"))}
-              className="px-8 py-4 bg-primary text-primary-foreground font-display text-[11px] hover:opacity-90 transition-opacity"
+              className="px-8 min-h-12 bg-primary text-primary-foreground font-display text-xs hover:opacity-90 transition-opacity"
             >
               Get Directions
             </button>
@@ -55,7 +55,7 @@ export const Footer = () => {
         </div>
 
         <div className="flex items-center justify-between flex-wrap gap-6 pt-8 border-t border-background/15">
-          <p className="font-display text-[10px] opacity-60">
+          <p className="font-display text-xs opacity-60">
             © 2026 Tres Beaux Beauty Salon. All rights reserved.
           </p>
           <div className="flex gap-3">

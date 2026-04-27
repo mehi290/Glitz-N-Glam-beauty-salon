@@ -1,11 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { TESTIMONIALS } from "./data";
 
 export const Testimonials = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const loop = [...TESTIMONIALS, ...TESTIMONIALS];
-  const [showSwipeHint, setShowSwipeHint] = useState(true);
 
   const nudge = (dir: 1 | -1) => {
     const el = trackRef.current;
@@ -33,31 +32,22 @@ export const Testimonials = () => {
 
       <div className="relative max-w-7xl mx-auto">
         <div className="mb-12 md:mb-16">
-          <div className="flex items-center gap-4 mb-3">
-            <span className="block h-px w-14 bg-yellow-500/80" />
-            <h2 className="text-white text-3xl md:text-5xl font-black tracking-tight drop-shadow-lg font-display normal-case">
-              What Our Customers Say
-            </h2>
-          </div>
+          <h2 className="text-white text-3xl md:text-5xl font-black tracking-tight drop-shadow-lg font-display normal-case">
+            What Our Customers Say
+          </h2>
         </div>
 
         <div className="relative group">
-          {showSwipeHint && (
-            <p className="md:hidden mb-3 text-white/75 text-xs">Swipe for more testimonials</p>
-          )}
-
           <div
             ref={trackRef}
             className="overflow-x-auto [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none" }}
-            onTouchStart={() => setShowSwipeHint(false)}
-            onMouseDown={() => setShowSwipeHint(false)}
           >
             <div className="flex gap-6 w-max animate-marquee group-hover:[animation-play-state:paused]">
               {loop.map((t, idx) => (
                 <article
                   key={idx}
-                  className="w-[300px] md:w-[360px] shrink-0 rounded-xl border border-white/15 bg-black/40 backdrop-blur-md p-6 md:p-7 flex flex-col items-center text-center"
+                  className="w-[85vw] max-w-[300px] md:w-[360px] shrink-0 rounded-xl border border-white/15 bg-black/40 backdrop-blur-md p-6 md:p-7 flex flex-col items-center text-center"
                 >
                   <h3 className="text-white text-lg font-medium tracking-wide lowercase">
                     {t.name}

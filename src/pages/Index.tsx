@@ -7,7 +7,7 @@ import { Footer } from "@/components/site/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-svh bg-background text-foreground overflow-x-clip">
       <Sidebar />
       <main className="md:pl-[88px] pt-14 md:pt-0">
         <Hero />

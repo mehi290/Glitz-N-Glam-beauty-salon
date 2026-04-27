@@ -36,10 +36,10 @@ export const Sidebar = () => {
   return (
     <>
       {/* Mobile top bar */}
-      <div className="md:hidden fixed top-0 inset-x-0 z-50 flex items-center justify-between px-5 h-14 bg-background/85 backdrop-blur border-b border-border">
+      <div className="md:hidden fixed top-0 inset-x-0 z-50 flex items-center justify-between px-4 sm:px-5 h-[calc(3.5rem+env(safe-area-inset-top))] pt-[env(safe-area-inset-top)] bg-background/85 backdrop-blur border-b border-border">
         <button
           onClick={() => handleNav("home")}
-          className="font-editorial font-bold text-xl tracking-tight"
+          className="font-display font-bold text-xl tracking-tight"
           aria-label="Tres Beaux home"
         >
           Tres Beaux
@@ -47,7 +47,7 @@ export const Sidebar = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => window.dispatchEvent(new Event("open-booking-flow"))}
-            className="px-3 py-1.5 border border-foreground/20 text-foreground text-[10px] font-display hover:bg-foreground hover:text-background transition-colors"
+            className="px-4 min-h-10 bg-[#9F3F5C] text-white text-xs font-display tracking-[0.08em] hover:bg-[#8E3852] transition-colors"
             aria-label="Book now"
           >
             Book Now
@@ -65,11 +65,11 @@ export const Sidebar = () => {
       {/* Mobile drawer */}
       <div
         className={cn(
-          "md:hidden fixed inset-0 z-40 bg-background transition-opacity duration-300",
+          "md:hidden fixed inset-0 z-40 bg-background transition-opacity duration-300 overflow-y-auto pb-[max(1rem,env(safe-area-inset-bottom))]",
           open ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
-        <nav className="flex flex-col items-start gap-6 px-8 pt-24">
+        <nav className="flex flex-col items-start gap-6 px-8 pt-[calc(3.5rem+env(safe-area-inset-top)+1.5rem)] min-h-full">
           {NAV_LINKS.map((l) => (
             <button
               key={l.id}

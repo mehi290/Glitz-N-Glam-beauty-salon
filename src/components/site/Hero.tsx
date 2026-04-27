@@ -1,10 +1,42 @@
+import { useEffect, useState } from "react";
 import { HERO_TILES } from "./data";
 
 export const Hero = () => {
+  const title = "TREX BEAUX SALON";
+  const subtitle = "Discover The New You";
+  const [typedTitle, setTypedTitle] = useState("");
+  const [typedSubtitle, setTypedSubtitle] = useState("");
+
+  useEffect(() => {
+    let timeoutId: number | undefined;
+
+    const typeTitle = (index: number) => {
+      if (index <= title.length) {
+        setTypedTitle(title.slice(0, index));
+        timeoutId = window.setTimeout(() => typeTitle(index + 1), 90);
+        return;
+      }
+      timeoutId = window.setTimeout(() => typeSubtitle(1), 180);
+    };
+
+    const typeSubtitle = (index: number) => {
+      if (index <= subtitle.length) {
+        setTypedSubtitle(subtitle.slice(0, index));
+        timeoutId = window.setTimeout(() => typeSubtitle(index + 1), 70);
+      }
+    };
+
+    typeTitle(1);
+
+    return () => {
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <section
       id="home"
-      className="relative w-full h-screen min-h-[640px] overflow-hidden bg-background"
+      className="relative w-full min-h-[100svh] min-h-[100dvh] md:min-h-[640px] overflow-hidden bg-background"
     >
       {/* 6-tile mosaic: 3x2 desktop, 2x3 mobile */}
       <div className="absolute inset-0 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-0">
@@ -34,13 +66,19 @@ export const Hero = () => {
       </div>
 
       {/* Tagline centered across the horizontal seam */}
-      <div className="absolute inset-0 flex items-center justify-center px-6 pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center px-5 sm:px-6 pointer-events-none">
         <div className="text-center text-background text-shadow-hero max-w-5xl">
-          <h1 className="font-display font-bold leading-[1.1] text-[18px] sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
-            TREX BEAUX SALON
+          <h1 className="font-display font-bold leading-[1.15] text-[17px] sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
+            {typedTitle}
+            {typedTitle.length < title.length ? (
+              <span className="inline-block w-[0.08em] h-[0.95em] ml-[0.08em] bg-background align-[-0.08em] animate-pulse" />
+            ) : null}
           </h1>
-          <p className="mt-3 sm:mt-4 font-editorial text-[#FFE6F1] [text-shadow:0_2px_14px_rgba(0,0,0,0.75)] text-2xl sm:text-3xl md:text-5xl lg:text-6xl">
-            Discover The New You
+          <p className="mt-3 sm:mt-4 font-editorial text-[#FFE6F1] [text-shadow:0_2px_14px_rgba(0,0,0,0.75)] text-xl sm:text-3xl md:text-5xl lg:text-6xl max-w-[18ch] mx-auto leading-[1.2]">
+            {typedSubtitle}
+            {typedTitle.length >= title.length && typedSubtitle.length < subtitle.length ? (
+              <span className="inline-block w-[0.08em] h-[0.9em] ml-[0.08em] bg-[#FFE6F1] align-[-0.08em] animate-pulse" />
+            ) : null}
           </p>
         </div>
       </div>
