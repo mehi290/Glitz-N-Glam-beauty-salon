@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { ABOUT_IMAGE } from "./data";
 
 export const About = () => {
   const aboutTitle = "About Trex Beaux";
-  const aboutVideoSrc = "/Screen Recording 2026-04-27 182213.mp4";
+  const aboutVideoSrc = "/hero-video.mp4";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
-  const [aboutVideoFailed, setAboutVideoFailed] = useState(false);
 
   useEffect(() => {
     let timeoutId: number | undefined;
@@ -47,26 +45,16 @@ export const About = () => {
 
         <div className="mb-8">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            {aboutVideoFailed ? (
-              <img
-                src={ABOUT_IMAGE}
-                alt="[PHOTO About section]"
-                loading="eager"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : (
-              <video
-                src={aboutVideoSrc}
-                poster={ABOUT_IMAGE}
-                preload="auto"
-                autoPlay
-                loop
-                muted
-                playsInline
-                onError={() => setAboutVideoFailed(true)}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            )}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+            >
+              <source src={aboutVideoSrc} type="video/mp4" />
+            </video>
           </div>
         </div>
 
@@ -117,26 +105,16 @@ export const About = () => {
 
         <div className="w-full md:max-w-lg md:justify-self-end">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            {aboutVideoFailed ? (
-              <img
-                src={ABOUT_IMAGE}
-                alt="[PHOTO About section]"
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : (
-              <video
-                src={aboutVideoSrc}
-                poster={ABOUT_IMAGE}
-                preload="metadata"
-                autoPlay
-                loop
-                muted
-                playsInline
-                onError={() => setAboutVideoFailed(true)}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            )}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+            >
+              <source src={aboutVideoSrc} type="video/mp4" />
+            </video>
           </div>
         </div>
       </div>
