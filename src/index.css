@@ -8,35 +8,49 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* TRES BEAUX brand tokens */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 240 12% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 12% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 12% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Bold blue CTA #2D2DCC */
+    --primary: 240 64% 49%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Pink CTA #E8A0B8 */
+    --secondary: 339 60% 77%;
+    --secondary-foreground: 240 12% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 270 25% 96%;
+    --muted-foreground: 240 6% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Soft lavender #E8E4F0 */
+    --lavender: 257 30% 92%;
+    --lavender-foreground: 240 12% 12%;
+
+    /* Soft pink #F5C8D8 */
+    --blush: 339 70% 87%;
+    --blush-foreground: 240 12% 12%;
+
+    --accent: 257 30% 92%;
+    --accent-foreground: 240 12% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 10% 90%;
+    --input: 240 10% 90%;
+    --ring: 240 64% 49%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
+
+    --shadow-soft: 0 20px 60px -20px hsl(240 30% 40% / 0.15);
+    --transition-elegant: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +114,31 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "kern";
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-editorial {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .font-display {
+    font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .glass-label {
+    background: hsl(0 0% 100% / 0.65);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
