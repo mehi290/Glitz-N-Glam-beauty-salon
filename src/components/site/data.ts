@@ -50,22 +50,40 @@ export const SERVICE_CATEGORIES: {
 
 export const TESTIMONIALS = [
   {
+    name: "joseph cordray",
+    rating: 5,
     quote:
-      "[Tres Beaux completely transformed my look. The atmosphere is unmatched — it feels like stepping into an editorial.]",
-    name: "[CLIENT NAME]",
-    location: "[LOCATION]",
+      "I just wanted to express my gratitude for the staff at Tres Beaux — City Centre Doris. The staff working with Maamar who did so much for me was very genuine, warm and passionate about the work they do. I received a great hair cut, hair dye, beard shave, facial, plus manicure and pedicure.",
   },
   {
+    name: "shariq khan",
+    rating: 5,
     quote:
-      "[Every visit feels considered, from the lighting to the final touch. This is beauty as it should be.]",
-    name: "[CLIENT NAME]",
-    location: "[LOCATION]",
+      "Great place to pamper yourself, very hard on, courteous and professional staff and climate expectations are managed above and beyond.",
   },
   {
+    name: "jonas sergio",
+    rating: 5,
     quote:
-      "[The team listens. They guide. They create. I leave looking like the best version of myself.]",
-    name: "[CLIENT NAME]",
-    location: "[LOCATION]",
+      "The staff has an excellent customer service and the haircut is amazing. I highly recommend this to my family and friends.",
+  },
+  {
+    name: "kenjis0308",
+    rating: 5,
+    quote:
+      "It was my first time to call this place and they had an opening on the same day. The stylist provided the haircut style I wanted. Highly recommend this salon.",
+  },
+  {
+    name: "amelia rose",
+    rating: 5,
+    quote:
+      "Every visit feels considered, from the lighting to the final touch. This is beauty as it should be — a calm, editorial experience.",
+  },
+  {
+    name: "noah bennett",
+    rating: 5,
+    quote:
+      "The team listens, guides and creates. I leave looking like the best version of myself every single time. Highly recommended.",
   },
 ];
 

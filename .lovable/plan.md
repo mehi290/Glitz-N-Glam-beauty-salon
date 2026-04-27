@@ -1,107 +1,60 @@
-## Match Reference Screenshots — Hero, About Us, Services
+## Goal
 
-Rebuild the top three sections of the page to mirror the reference screenshots exactly, in this order: **Hero → About Us → Services (horizontal slider)**.
+Restyle ONLY the Testimonials section to match the reference video: a dark, atmospheric strip where multiple testimonial cards continuously slide horizontally on their own, each card showing the reviewer's name on top, a row of gold star icons, then the quote text below.
 
----
-
-### 1. Hero — 8-tile image mosaic (screenshot 1)
-
-```text
-┌──────────┬──────────┬──────────┬──────────┐
-│  braid   │  face    │  hands   │  hair    │
-├──────────┼──────────┼──────────┼──────────┤
-│  eye     │  rings   │  smile   │ hand/hair│
-└──────────┴──────────┴──────────┴──────────┘
-        TRES BEAUX × YOU IS OUR FAVORITE
-                 COLLABORATION
-   (white uppercase, centered across the seam)
-```
-
-- Full-viewport CSS grid: `grid-cols-4 grid-rows-2` desktop, `grid-cols-2 grid-rows-4` mobile.
-- 8 Unsplash beauty images (braid, portrait, manicured hands, hair texture, eye makeup, rings, smile, hand-in-hair).
-- Tagline overlaid centered, bold uppercase white display type with subtle text-shadow for legibility.
-- **Remove** the current "BOOK APPOINTMENT" / "EXPLORE SERVICES" buttons and the "Est. [YEAR]" line — reference has none in the hero body.
-
-### 2. About Us (screenshot 3)
-
-```text
-┌──────────────────────────┬───────────────────────────┐
-│                          │                           │
-│  About gorgeous          │                           │
-│  Tres Beaux world!       │                           │
-│  (script, soft pink)     │     [LARGE PORTRAIT       │
-│                          │      PHOTO — two          │
-│  About us                │      stylists / clients]  │
-│  (huge bold black,       │                           │
-│   underlined accent)     │                           │
-│                          │                           │
-│  Tres Beaux. That's like │                           │
-│  a beauty salon, but way │                           │
-│  way better!  (bold)     │                           │
-│                          │                           │
-│  [3 short paragraphs of  │                           │
-│   body copy in muted     │                           │
-│   gray]                  │                           │
-│                          │                           │
-└──────────────────────────┴───────────────────────────┘
-```
-
-- Two-column layout, white background.
-- **Left column**:
-  - Script handwritten-style headline in soft pink: `About gorgeous Tres Beaux world!` (use a Google script font like *Allura* or *Great Vibes*).
-  - Below it, large bold sans heading `About us` with a thin pink underline accent through it.
-  - A bold lead line, then 3 short body paragraphs in muted gray (Inter, regular).
-- **Right column**: single tall portrait image, no frame, fills the column edge-to-edge.
-- Replace current About content with this structure; keep all copy as bracketed placeholders where appropriate, but use the reference copy as default text.
-
-### 3. Services — horizontal sliding carousel (screenshot 2)
-
-```text
-Services   (huge bold heading, with white strikethrough accent over it)
-
-┌─────────────────────┐ ┌─────────────────────┐ ┌────
-│                     │ │                     │ │
-│   [SERVICE PHOTO]   │ │   [SERVICE PHOTO]   │ │  …
-│                     │ │              ┌────┐ │ │
-│              ┌────┐ │ │              │FROST│ │ │
-│              │FROST│ │ │              │LABEL│ │ │
-│              └────┘ │ │              └────┘ │ │
-│                     │ │                     │ │
-└─────────────────────┘ └─────────────────────┘ └────
-        ← drag / swipe horizontally →
-```
-
-- Section background: **soft lavender** (`hsl(var(--lavender))`) to match reference.
-- Heading "Services" — huge bold sans, with a thin white horizontal line struck through the text (decorative `::after` or absolute span).
-- **Single horizontal carousel** containing ALL services (not split into category sub-carousels — the reference is one long slider). Categories become a small filter row above the slider (Hair / Nails / Makeup / Skin / All).
-- Cards: tall portrait aspect (~4:5), large rounded corners optional but reference is square — keep square. Each card has the **frosted-glass label** (`backdrop-blur`, semi-transparent white, uppercase service name) positioned **centered-right** over the image, exactly like the reference.
-- Drag/swipe on touch, arrow buttons on desktop, scroll-snap.
-- Cards show ~2 at a time on desktop, ~1.2 on mobile so the next card peeks.
-
-### 4. Section order on the page
-
-```text
-1. Hero (mosaic)
-2. About Us
-3. Services (horizontal slider)
-4. Team
-5. Testimonials
-6. Footer / Contact
-```
+Nothing else on the site changes (Hero, About, Services, Footer stay as they are).
 
 ---
 
-### Files to change
+## What the new Testimonials section looks like
 
-- `src/index.css` — add a script font (e.g. Allura) via Google Fonts; add `.font-script` utility; ensure lavender token is exposed.
-- `tailwind.config.ts` — register `script` font family.
-- `src/components/site/data.ts` — add `HERO_TILES` (8 URLs) and `ABOUT_PORTRAIT` (single tall portrait); flatten services into a single list while keeping category tags for the filter.
-- `src/components/site/Hero.tsx` — rebuild as 8-tile mosaic with overlay tagline; remove CTAs.
-- `src/components/site/About.tsx` — rebuild with script headline + bold "About us" + lead + 3 paragraphs + right portrait.
-- `src/components/site/Services.tsx` — rebuild as a single horizontal slider with category filter chips, lavender background, struck-through heading, frosted-glass labels centered-right.
-- `src/pages/Index.tsx` — confirm order Hero → About → Services → Team → Testimonials → Footer.
+- Full-width dark section with a soft moody background (subtle dark image or gradient + overlay) so the cards float on top of it.
+- Section header on top:
+  - Small gold accent line + heading "What Our Customers Say"
+  - Subline "What customers think about us"
+- A horizontal track of testimonial cards that **auto-scrolls continuously** from right to left (infinite marquee, seamless loop).
+- 3 cards visible at once on desktop, 2 on tablet, 1 on mobile.
+- Pauses on hover so the user can read.
+- Optional left/right chevron arrows on the sides for manual nudging (visual match to the video).
 
-### Out of scope
+### Card design (matches video)
 
-- Sidebar, Team, Testimonials, Footer untouched.
-- No booking form wiring; all CTAs remain visual only.
+- Dark translucent rounded rectangle with subtle border and soft glass blur.
+- Top: reviewer name in a clean lowercase white font (e.g. "joseph cordray").
+- Middle: 5 gold star icons centered.
+- Bottom: short quote in light gray, centered, 3–4 lines.
+
+---
+
+## Implementation
+
+### 1. `src/components/site/data.ts`
+- Expand `TESTIMONIALS` to ~6 entries (so the marquee feels full) with `name`, `rating` (number 1–5), and `quote`. Drop the unused `location` field for this layout.
+
+### 2. `src/components/site/Testimonials.tsx` (rewrite)
+- Replace the current single-quote slider with a marquee:
+  - Wrapper section: `bg-[#0c0c0c]` (or existing dark token) with a subtle background image + dark overlay.
+  - Header block with gold underline accent.
+  - Track: a flex row containing the testimonials list rendered **twice back-to-back** so the CSS animation can loop seamlessly (`translateX(0) → translateX(-50%)`).
+  - Each card: fixed width (`w-[320px] md:w-[360px]`), dark glass styling (`bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6`).
+  - Star row: 5 `lucide-react` `Star` icons, filled, `text-yellow-400`.
+  - `group-hover:[animation-play-state:paused]` to pause on hover.
+  - Side arrows (decorative, scroll the container by a card width on click).
+
+### 3. `tailwind.config.ts`
+- Add a `marquee` keyframe and animation:
+  - `marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } }`
+  - `animation: { marquee: 'marquee 40s linear infinite' }`
+
+### 4. No changes to
+- Hero, About, Services, Footer, Sidebar, Index page order, fonts, or color tokens.
+
+---
+
+## Files touched
+
+- `src/components/site/Testimonials.tsx` — rewritten
+- `src/components/site/data.ts` — testimonials array updated (name + rating + quote)
+- `tailwind.config.ts` — add marquee keyframe + animation
+
+That's it — small, surgical, and limited to the testimonials block.
