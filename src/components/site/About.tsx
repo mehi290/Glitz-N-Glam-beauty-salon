@@ -34,7 +34,7 @@ export const About = () => {
         </div>
 
         {/* Right — portrait */}
-        <div className="order-2 md:order-2 w-full md:max-w-l md:justify-self-end">
+        <div className="order-2 md:order-2 w-full md:max-w-lg md:justify-self-end">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
             <video
               src="/Screen%20Recording%202026-04-27%20182213.mp4"

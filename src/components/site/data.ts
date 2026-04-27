@@ -20,7 +20,7 @@ export const SERVICE_CATEGORIES: {
       { name: "COLOR & BALAYAGE", image: "/hair color.mp4" },
       {
         name: "Nanoplastic",
-        image: u("photo-1522337360788-8b13dee7a37e"),
+        image: "/nano.png",
       },
       { name: "BRIDAL MAKE UP", image: u("photo-1487412947147-5cebf100ffc2") },
       { name: "BLOW DRY", image: "/keratin.jpg" },
