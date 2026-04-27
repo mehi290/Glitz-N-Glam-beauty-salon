@@ -15,7 +15,7 @@ export const Testimonials = () => {
     >
       <div className="max-w-5xl mx-auto">
         <p className="font-display text-[11px] text-foreground/60 mb-8">
-          Voices — 04
+          Testimonials — 04
         </p>
         <blockquote className="font-editorial text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-foreground min-h-[200px] md:min-h-[280px]">
           “{t.quote}”
