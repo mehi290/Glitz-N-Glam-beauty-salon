@@ -3,6 +3,7 @@ import { ABOUT_IMAGE } from "./data";
 
 export const About = () => {
   const aboutTitle = "About Trex Beaux";
+  const aboutVideoSrc = "/Screen Recording 2026-04-27 182213.mp4";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
   const [aboutVideoFailed, setAboutVideoFailed] = useState(false);
 
@@ -55,7 +56,7 @@ export const About = () => {
               />
             ) : (
               <video
-                src="/Screen%20Recording%202026-04-27%20182213.mp4"
+                src={aboutVideoSrc}
                 poster={ABOUT_IMAGE}
                 preload="auto"
                 autoPlay
@@ -125,7 +126,7 @@ export const About = () => {
               />
             ) : (
               <video
-                src="/Screen%20Recording%202026-04-27%20182213.mp4"
+                src={aboutVideoSrc}
                 poster={ABOUT_IMAGE}
                 preload="metadata"
                 autoPlay
