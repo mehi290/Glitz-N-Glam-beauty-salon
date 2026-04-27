@@ -80,45 +80,44 @@ export const Sidebar = () => {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex fixed left-0 top-0 bottom-0 z-40 w-[200px] flex-col justify-between px-8 py-10 border-r border-border bg-background">
+      <aside className="hidden md:flex fixed left-0 top-0 bottom-0 z-40 w-[88px] flex-col items-center justify-between py-8 border-r border-border bg-background">
+        {/* Brand — rotated vertical, top */}
         <button
           onClick={() => handleNav("home")}
-          className="text-left"
           aria-label="Tres Beaux home"
+          className="flex items-center justify-center"
         >
-          <div className="font-editorial text-3xl leading-none">Tres</div>
-          <div className="font-editorial text-3xl leading-none italic">Beaux</div>
-          <div className="font-display text-[10px] text-muted-foreground mt-2">
-            Beauty Salon
-          </div>
+          <span
+            className="font-editorial text-2xl leading-none text-primary tracking-tight"
+            style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          >
+            Tres <span className="italic">Beaux</span>
+          </span>
         </button>
 
-        <nav className="flex flex-col gap-5">
+        {/* Vertical rotated nav */}
+        <nav className="flex-1 flex flex-col items-center justify-center gap-10">
           {NAV_LINKS.map((l) => (
             <button
               key={l.id}
               onClick={() => handleNav(l.id)}
               className={cn(
-                "text-left font-display text-[11px] transition-colors",
+                "font-display text-[11px] transition-colors",
                 active === l.id
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"
               )}
+              style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
             >
-              <span className="inline-block w-4 mr-2 align-middle">
-                <span
-                  className={cn(
-                    "block h-px transition-all",
-                    active === l.id ? "bg-primary w-4" : "bg-border w-2"
-                  )}
-                />
-              </span>
               {l.label}
             </button>
           ))}
         </nav>
 
-        <div className="font-display text-[10px] text-muted-foreground">
+        <div
+          className="font-display text-[9px] text-muted-foreground"
+          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+        >
           © Tres Beaux
         </div>
       </aside>
