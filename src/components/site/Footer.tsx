@@ -11,19 +11,19 @@ export const Footer = () => {
           <div>
             <p className="font-display text-xs opacity-60 mb-5">Find Us</p>
             <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-8 md:mb-10 max-w-4xl">
-              Visit Awtar Beauty center Dubai
+              Visit Awtar Beauty center Sharjah
             </h2>
 
             <div className="space-y-5 mb-10">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 opacity-70" />
                 <p className="font-editorial text-xl leading-snug">
-                  Trio Building, Al Barsha, Dubai, UAE
+                  Aljada, Mowelih, Bldg Rihan 3, Sharjah, UAE
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 opacity-70" />
-                <p className="font-editorial text-xl leading-snug">+971 50 536 5757</p>
+                <p className="font-editorial text-xl leading-snug">+971 52 160 0013</p>
               </div>
               <div className="flex items-start gap-3">
                 <Clock className="w-4 h-4 mt-1 opacity-70" />
@@ -31,7 +31,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-start gap-3">
                 <MessageCircle className="w-4 h-4 mt-1 opacity-70" />
-                <p className="font-editorial text-xl leading-snug">Mobile: +971 50 536 5757</p>
+                <p className="font-editorial text-xl leading-snug">Mobile: +971 52 160 0013</p>
               </div>
             </div>
 
@@ -46,7 +46,7 @@ export const Footer = () => {
           <div className="w-full">
             <iframe
               title="Awtar Beauty center map"
-              src="https://www.google.com/maps?q=Trio+Building+Al+Barsha+Dubai+UAE&output=embed"
+              src="https://www.google.com/maps?q=Bldg+Rihan+3+Aljada+Mowelih+Sharjah+UAE&output=embed"
               className="w-full h-[340px] md:h-[380px] border border-background/20"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

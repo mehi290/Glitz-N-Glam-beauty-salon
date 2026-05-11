@@ -40,7 +40,7 @@ export const About = () => {
         <h2 className="font-editorial text-[#8F3E59] text-2xl leading-[1.15] tracking-tight mb-8">
           Luxury Beauty Salon in
           <br />
-          Dubai
+          Sharjah
         </h2>
 
         <div className="mb-8">
@@ -82,7 +82,7 @@ export const About = () => {
           <h2 className="font-editorial text-[#8F3E59] text-2xl md:text-4xl leading-[1.15] tracking-tight mb-8">
             Luxury Beauty Salon in
             <br />
-            Dubai
+            Sharjah
           </h2>
 
           <div className="space-y-5 text-muted-foreground text-base leading-relaxed max-w-xl">

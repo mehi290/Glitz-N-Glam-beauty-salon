@@ -399,7 +399,7 @@ export const Services = () => {
                     <input
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
-                      placeholder="+971 50 123 4567"
+                      placeholder="+971 52 160 0013"
                       className="w-full px-3 py-3 border border-foreground/20 bg-white/65 outline-none focus:border-[#9F3F5C]"
                     />
                   </div>
