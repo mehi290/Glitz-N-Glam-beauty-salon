@@ -410,7 +410,7 @@ export const Services = () => {
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="bg-white/55 border border-foreground/15 p-4 rounded-sm">
                     <p className="text-sm text-foreground mb-2">
-                      Thank you for choosing Trex Beaux Beauty Lounge, we will be waiting for you.
+                      Thank you for choosing Awtar Beauty center, we will be waiting for you.
                     </p>
                     <p className="text-xs text-foreground/70 mb-1">Service</p>
                     <p className="font-semibold">{selectedService}</p>

@@ -11,7 +11,7 @@ export const Footer = () => {
           <div>
             <p className="font-display text-xs opacity-60 mb-5">Find Us</p>
             <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-8 md:mb-10 max-w-4xl">
-              Visit Tres Beauty Lounge Dubai
+              Visit Awtar Beauty center Dubai
             </h2>
 
             <div className="space-y-5 mb-10">
@@ -45,7 +45,7 @@ export const Footer = () => {
 
           <div className="w-full">
             <iframe
-              title="Tres Beauty Lounge map"
+              title="Awtar Beauty center map"
               src="https://www.google.com/maps?q=Trio+Building+Al+Barsha+Dubai+UAE&output=embed"
               className="w-full h-[340px] md:h-[380px] border border-background/20"
               loading="lazy"
@@ -56,7 +56,7 @@ export const Footer = () => {
 
         <div className="flex items-center justify-between flex-wrap gap-6 pt-8 border-t border-background/15">
           <p className="font-display text-xs opacity-60">
-            © 2026 Tres Beaux Beauty Salon. All rights reserved.
+            © 2026 Awtar Beauty center. All rights reserved.
           </p>
           <div className="flex gap-3">
             <a

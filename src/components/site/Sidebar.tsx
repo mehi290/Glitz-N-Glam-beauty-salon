@@ -40,9 +40,9 @@ export const Sidebar = () => {
         <button
           onClick={() => handleNav("home")}
           className="font-display font-bold text-xl tracking-tight"
-          aria-label="Tres Beaux home"
+          aria-label="Awtar Beauty center home"
         >
-          Tres Beaux
+          Awtar Beauty center
         </button>
         <div className="flex items-center gap-3">
           <button
