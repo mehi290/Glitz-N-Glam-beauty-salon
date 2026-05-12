@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const About = () => {
-  const aboutTitle = "About Awtar Beauty center";
+  const aboutTitle = "About Tres Beauty Lounge";
   const aboutImageSrc = "/about image.png";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
 
@@ -40,7 +40,7 @@ export const About = () => {
         <h2 className="font-editorial text-[#8F3E59] text-2xl leading-[1.15] tracking-tight mb-8">
           Luxury Beauty Salon in
           <br />
-          Sharjah
+          Dubai
         </h2>
 
         <div className="mb-8">
@@ -57,7 +57,7 @@ export const About = () => {
         <div className="space-y-5 text-muted-foreground text-base leading-relaxed max-w-xl">
           <p>
             Where beauty meets precision, with a signature touch of luxury.
-            Awtar Beauty center is a sanctuary where craft meets care. Our stylists,
+            Tres Beauty Lounge is a sanctuary where craft meets care. Our stylists,
             colorists, and artists collaborate with each guest to create looks
             that feel honest, modern, and entirely their own.
           </p>
@@ -82,13 +82,13 @@ export const About = () => {
           <h2 className="font-editorial text-[#8F3E59] text-2xl md:text-4xl leading-[1.15] tracking-tight mb-8">
             Luxury Beauty Salon in
             <br />
-            Sharjah
+            Dubai
           </h2>
 
           <div className="space-y-5 text-muted-foreground text-base leading-relaxed max-w-xl">
             <p>
               Where beauty meets precision, with a signature touch of luxury.
-              Awtar Beauty center is a sanctuary where craft meets care. Our stylists,
+              Tres Beauty Lounge is a sanctuary where craft meets care. Our stylists,
               colorists, and artists collaborate with each guest to create looks
               that feel honest, modern, and entirely their own.
             </p>

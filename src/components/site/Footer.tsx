@@ -11,19 +11,19 @@ export const Footer = () => {
           <div>
             <p className="font-display text-xs opacity-60 mb-5">Find Us</p>
             <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-8 md:mb-10 max-w-4xl">
-              Visit Awtar Beauty center Sharjah
+              Visit Tres Beauty Lounge 
             </h2>
 
             <div className="space-y-5 mb-10">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 opacity-70" />
                 <p className="font-editorial text-xl leading-snug">
-                  Aljada, Mowelih, Bldg Rihan 3, Sharjah, UAE
+                  G11-G12 Ground Floor AL DANA CENTER - Al Maktoum Rd - Dubai - UAE
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 opacity-70" />
-                <p className="font-editorial text-xl leading-snug">+971 52 160 0013</p>
+                <p className="font-editorial text-xl leading-snug">+971 505365757</p>
               </div>
               <div className="flex items-start gap-3">
                 <Clock className="w-4 h-4 mt-1 opacity-70" />
@@ -31,7 +31,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-start gap-3">
                 <MessageCircle className="w-4 h-4 mt-1 opacity-70" />
-                <p className="font-editorial text-xl leading-snug">Mobile: +971 52 160 0013</p>
+                <p className="font-editorial text-xl leading-snug">Mobile: +971 505365757</p>
               </div>
             </div>
 
@@ -45,8 +45,8 @@ export const Footer = () => {
 
           <div className="w-full">
             <iframe
-              title="Awtar Beauty center map"
-              src="https://www.google.com/maps?q=Bldg+Rihan+3+Aljada+Mowelih+Sharjah+UAE&output=embed"
+              title="Tres Beauty Lounge map"
+              src="https://www.google.com/maps?q=G11-G12+Ground+Floor+AL+DANA+CENTER+Al+Maktoum+Rd+Dubai+UAE&output=embed"
               className="w-full h-[340px] md:h-[380px] border border-background/20"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -56,7 +56,7 @@ export const Footer = () => {
 
         <div className="flex items-center justify-between flex-wrap gap-6 pt-8 border-t border-background/15">
           <p className="font-display text-xs opacity-60">
-            © 2026 Awtar Beauty center. All rights reserved.
+            © 2026 Tres Beauty Lounge. All rights reserved.
           </p>
           <div className="flex gap-3">
             <a
