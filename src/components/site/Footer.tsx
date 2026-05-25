@@ -11,7 +11,7 @@ export const Footer = () => {
           <div>
             <p className="font-display text-xs opacity-60 mb-5">Find Us</p>
             <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-8 md:mb-10 max-w-4xl">
-              Visit Tres Beauty Lounge 
+              Visit Front Row Beauty Salon 
             </h2>
 
             <div className="space-y-5 mb-10">
@@ -56,7 +56,7 @@ export const Footer = () => {
 
         <div className="flex items-center justify-between flex-wrap gap-6 pt-8 border-t border-background/15">
           <p className="font-display text-xs opacity-60">
-            © 2026 Tres Beauty Lounge. All rights reserved.
+            © 2026 Front Row Beauty Salon. All rights reserved.
           </p>
           <div className="flex gap-3">
             <a
