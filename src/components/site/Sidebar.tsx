@@ -39,10 +39,10 @@ export const Sidebar = () => {
       <div className="md:hidden fixed top-0 inset-x-0 z-50 flex items-center justify-between px-4 sm:px-5 h-[calc(3.5rem+env(safe-area-inset-top))] pt-[env(safe-area-inset-top)] bg-background/85 backdrop-blur border-b border-border">
         <button
           onClick={() => handleNav("home")}
-          className="font-display font-bold text-xl tracking-tight"
+          className="flex items-center"
           aria-label="Glitz N Glam beauty salon home"
         >
-          Glitz N Glam beauty salon
+          <img src="/glitz logo.png" alt="Glitz N Glam logo" className="h-9 w-auto object-contain" />
         </button>
         <div className="flex items-center gap-3">
           <button
@@ -89,7 +89,14 @@ export const Sidebar = () => {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex fixed left-0 top-0 bottom-0 z-40 w-[88px] flex-col items-center justify-center py-8 border-r border-border bg-background">
+      <aside className="hidden md:flex fixed left-0 top-0 bottom-0 z-40 w-[88px] flex-col items-center justify-between py-8 border-r border-border bg-background">
+        <button
+          onClick={() => handleNav("home")}
+          aria-label="Glitz N Glam beauty salon home"
+          className="w-12 h-12 flex items-center justify-center hover:opacity-80 transition-opacity"
+        >
+          <img src="/glitz logo.png" alt="Glitz N Glam logo" className="w-11 h-11 object-contain" />
+        </button>
         {/* Vertical rotated nav */}
         <nav className="flex-1 flex flex-col items-center justify-center gap-10">
           {NAV_LINKS.map((l) => (

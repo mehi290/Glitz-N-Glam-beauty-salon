@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 export const About = () => {
-  const aboutTitle = "About Glitz N Glam beauty salon";
-  const aboutImageSrc = "/about image.png";
+  const aboutTitle = "About Glitz N Glam";
+  const aboutVideoSrc = "/about glitz.mp4";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
 
   useEffect(() => {
@@ -45,10 +45,12 @@ export const About = () => {
 
         <div className="mb-8">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <img
-              src={aboutImageSrc}
-              alt="[PHOTO About section]"
-              loading="eager"
+            <video
+              src={aboutVideoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
             />
           </div>
@@ -92,7 +94,7 @@ export const About = () => {
               colorists, and artists collaborate with each guest to create looks
               that feel honest, modern, and entirely their own.
             </p>
-            </div>
+          </div>
 
           <button className="mt-8 px-8 py-4 bg-[#9F3F5C] text-white font-display text-sm tracking-[0.06em] hover:bg-[#8E3852] transition-colors">
             Book a Visit
@@ -101,10 +103,12 @@ export const About = () => {
 
         <div className="w-full md:max-w-lg md:justify-self-end">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <img
-              src={aboutImageSrc}
-              alt="[PHOTO About section]"
-              loading="lazy"
+            <video
+              src={aboutVideoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
             />
           </div>
