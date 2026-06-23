@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 
 export const About = () => {
   const aboutTitle = "About Glitz N Glam";
-  const aboutVideoSrc = "/about-glitz.mp4";
+  const aboutVideoSrc = "/about.mp4";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
   
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
