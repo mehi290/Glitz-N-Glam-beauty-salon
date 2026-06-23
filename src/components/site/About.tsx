@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export const About = () => {
   const aboutTitle = "About Glitz N Glam";
   const aboutVideoSrc = "/about-glitz.mp4";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
+  
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     let timeoutId: number | undefined;
@@ -16,6 +19,14 @@ export const About = () => {
     };
 
     typeTitle(1);
+
+    // Force muted and call play() programmatically to bypass React's muted gotcha/autoplay blocks
+    [mobileVideoRef, desktopVideoRef].forEach((ref) => {
+      if (ref.current) {
+        ref.current.muted = true;
+        ref.current.play().catch((err) => console.log("Video play autoplay prevented or failed:", err));
+      }
+    });
 
     return () => {
       if (timeoutId) window.clearTimeout(timeoutId);
@@ -46,6 +57,7 @@ export const About = () => {
         <div className="mb-8">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
             <video
+              ref={mobileVideoRef}
               src={aboutVideoSrc}
               autoPlay
               loop
@@ -104,6 +116,7 @@ export const About = () => {
         <div className="w-full md:max-w-lg md:justify-self-end">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
             <video
+              ref={desktopVideoRef}
               src={aboutVideoSrc}
               autoPlay
               loop
