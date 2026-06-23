@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { HERO_TILES } from "./data";
 
 export const Hero = () => {
-  const title = "My Beauty Salon";
+  const title = "Glitz N Glam beauty salon";
   const subtitle = "Discover The New You";
   const [typedTitle, setTypedTitle] = useState("");
   const [typedSubtitle, setTypedSubtitle] = useState("");

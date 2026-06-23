@@ -399,7 +399,7 @@ export const Services = () => {
                     <input
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
-                      placeholder="+971 52 160 0013"
+                      placeholder="0544011214"
                       className="w-full px-3 py-3 border border-foreground/20 bg-white/65 outline-none focus:border-[#9F3F5C]"
                     />
                   </div>
@@ -410,7 +410,7 @@ export const Services = () => {
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="bg-white/55 border border-foreground/15 p-4 rounded-sm">
                     <p className="text-sm text-foreground mb-2">
-                      Thank you for choosing My Beauty Salon, we will be waiting for you.
+                      Thank you for choosing Glitz N Glam beauty salon, we will be waiting for you.
                     </p>
                     <p className="text-xs text-foreground/70 mb-1">Service</p>
                     <p className="font-semibold">{selectedService}</p>
