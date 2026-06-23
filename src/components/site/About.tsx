@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export const About = () => {
   const aboutTitle = "About Glitz N Glam";
-  const aboutVideoSrc = "/about%20glitz.mp4";
+  const aboutVideoSrc = "/about-glitz.mp4";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
 
   useEffect(() => {
