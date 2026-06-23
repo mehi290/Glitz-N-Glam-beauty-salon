@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export const About = () => {
   const aboutTitle = "About Glitz N Glam";
-  const aboutImageSrc = "/aboutglitz.png";
   const [typedAboutTitle, setTypedAboutTitle] = useState("");
+
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     let timeoutId: number | undefined;
@@ -20,6 +22,17 @@ export const About = () => {
     return () => {
       if (timeoutId) window.clearTimeout(timeoutId);
     };
+  }, []);
+
+  // Separate effect to handle video autoplay after DOM mount
+  useEffect(() => {
+    [mobileVideoRef, desktopVideoRef].forEach((ref) => {
+      if (ref.current) {
+        ref.current.muted = true;
+        ref.current.load();
+        ref.current.play().catch(() => {});
+      }
+    });
   }, []);
 
   return (
@@ -45,12 +58,17 @@ export const About = () => {
 
         <div className="mb-8">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <img
-              src={aboutImageSrc}
-              alt="Glitz N Glam Salon Interior"
-              loading="eager"
+            <video
+              ref={mobileVideoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="/about.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
 
@@ -101,12 +119,17 @@ export const About = () => {
 
         <div className="w-full md:max-w-lg md:justify-self-end">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <img
-              src={aboutImageSrc}
-              alt="Glitz N Glam Salon Interior"
-              loading="lazy"
+            <video
+              ref={desktopVideoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="/about.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </div>
